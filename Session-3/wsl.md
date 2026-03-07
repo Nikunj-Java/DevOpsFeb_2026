@@ -70,3 +70,61 @@
     2. GREEN: file
     3. BLUE: folders
 ```
+- 7. cd (Changing Directory)
+```
+    cd
+```
+    - Examples
+    ```
+         cd documents
+         cd foldername 
+    ```
+- 8. Move Back in Linux
+```
+    cd ..
+```
+
+- 9. Go to Home Directory
+```
+    cd ~
+```
+- 10. Create Directories
+```
+    mkdir project1
+    or
+    mkdir project2 project3 project4
+```
+- 11. Creating Files
+```
+    touch file.txt
+```
+- 12. Copy Files
+```
+    cp file.txt backup.txt
+```
+- 13. copy Directory
+```
+    cp -r folder1 folder2
+```
+- 14. Move
+```
+    mv old.txt new.txt
+
+    or
+
+    mv file.txt /home/nikunj/documents
+```
+- 15. Remove (Delete)
+```
+    rm file.txt
+```
+
+- 16. Delete Directory
+```
+    rm -r folder
+```
+
+- 17. Force Delete
+```
+    rm -rf folder
+```
