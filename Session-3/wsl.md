@@ -159,3 +159,57 @@
 ```
     sudo usrdel jhon
 ``` 
+## Important
+```
+    man <linux command>
+    man ls
+    man cp
+    man sudo
+    man cat
+    man useradd
+    man groupadd
+```
+- this will not only explain the commands but also explains some sub commands as well
+- you can apply ```man``` anywhewre to get the idea of commands 
+
+# 3. Package Mangement & Syatem Administration
+
+| OS     | Package Manager |
+| ------ | --------------- |
+| Ubuntu | apt             |
+| CentOS | yum             |
+| Fedora | dnf             |
+
+ ## 1.Ubuntu
+ ```
+    sudo apt update
+    sudo apt upgrade
+ ```
+
+## Install Packages
+```
+    sudo apt install nginx
+```
+
+## remove Packages
+```
+    sudo apt remove nginx
+```
+
+## Check Installed Packages
+```
+    dpkg -l
+```
+## Check Syatem Information
+```
+    uname -a
+```
+
+## Check Running Process
+```
+    ps aux 
+
+    or
+
+    top
+```
