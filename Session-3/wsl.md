@@ -128,3 +128,34 @@
 ```
     rm -rf folder
 ```
+# 2. User & Group Management 
+- Linux is Multiuser OS
+```
+    root
+    nikunj
+    devloper
+```
+- 1.Create User
+```
+    sudo useradd jhon
+```
+- 2. set the password
+```
+    sudo passwd jhon
+```
+- 3. get the list of all users
+```
+    cut -d: -f1 /etc/passwd
+``` 
+- 4. Switch User
+```
+    sudo su jhon
+```
+- 5. Exit from the CLI
+```
+    exit
+```
+- 6. Delete The User
+```
+    sudo usrdel jhon
+``` 
