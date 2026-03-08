@@ -17,7 +17,7 @@
             r-x  --> group
             r--  --> others
         
-# 5 chmod, chown 
+# 5 chmod, chown , umask
     1. chmod (change permission)
     
     chmod u+x script.sh
@@ -81,4 +81,31 @@ Change Owner
 Change Owner Group
 ```
     sudo chown jhon:developer file.txt
+```
+
+## 3. umask (Default Permissions)
+Defines Default Permission for new files.
+1. check values
+```
+    umask
+```
+2. Example Output
+```
+    022
+```
+3. Default Permission
+```
+    666 - 022 = 644
+    meaning
+    6 = r-w
+    4 = r
+    4 = r
+```
+4. Default Directory Permission
+```
+    777 - 022= 755
+    meaning
+    7 = rwx
+    5 = rx
+    5 = rx
 ```
