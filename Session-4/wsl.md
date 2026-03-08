@@ -11,12 +11,12 @@
     3. Execute      -x
 - if some file has ```-rwxr-xr--``` permission
     ## Meaning
-        ```
+        
             -    --> file
             rwx  --> owner
             r-x  --> group
             r--  --> others
-        ```
+        
 # 5 chmod, chown ,umask
     1. chmod (change permission)
     ``` 
