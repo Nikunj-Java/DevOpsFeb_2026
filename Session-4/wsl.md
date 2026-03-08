@@ -19,16 +19,16 @@
         
 # 5 chmod, chown ,umask
     1. chmod (change permission)
-    ``` 
+    
     chmod u+x script.sh
-    ``` 
+ 
     Meaning
-    ```
+    
     u -> user
     g -> group
     o -> others
-    ```
+    
     Example
-    ``` 
+     
     chmod g+x file.txt
-    ``` 
+     
