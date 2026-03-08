@@ -159,6 +159,8 @@ uptime
 
 # Context Switching
 - context switching occurs when the CPU switches from One Process to another
+- Context switching is the mechanism by which the Linux kernel saves the current state context of a running process or thread and loads the saved state of another process to be run. 
+- This process makes it possible for multiple tasks to share a single CPU and provides the illusion of parallel execution in a multitasking environment.
 
 ## how to check context switching in linux?
 ```
