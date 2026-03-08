@@ -98,3 +98,41 @@ to run htop: htop
 3. Hit Enter
 4. Kill the process (F9)
 5. Hit Enter
+
+## Example:2 start any program and kill using top | htop
+
+# Free- Memory Usage Monitoring
+- it will provide a quick overview of sytem memory usage
+## How To Run?
+```
+free -h
+```
+## Understanding the output
+```
+total           : total memory available
+used            : RAM currently in use
+free            : Completely Free Memory available
+shared          : Memory Shared Between The Process
+buff/cache      : Memory used for bufferes and cache
+available       : RAM available for new process
+```
+
+## some of the important commands
+display the value in MB
+```
+free -m
+```
+
+display the value in GB
+```
+free -g
+```
+continuosly monitoring memory usage(Update on every One Seconds)
+```
+watch -n 1 free -h
+```
+
+# Summary
+1. top: for a quick overview of CPU / Memory usage
+2. htop: for an interactive user friendly process monitor as same as top but with colors
+3. free: to check the memory available as a glance
