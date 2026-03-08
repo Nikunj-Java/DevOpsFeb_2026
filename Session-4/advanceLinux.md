@@ -179,3 +179,23 @@ sar -w 1 5
 ```
 cat /proc/stat | grep ctxt
 ```
+
+# Summary
+1. Find a process: 
+```
+ps
+```
+2. Find a process with details: 
+```
+ps aux
+```
+3. Find a specific process with details: 
+```
+ps aux | grep process_name
+```
+4. Find a specific process with details: 
+```
+ps aux | grep top
+ps aux | grep htop
+ps aux | grep bash
+```
