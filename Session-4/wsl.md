@@ -17,7 +17,7 @@
             r-x  --> group
             r--  --> others
         
-# 5 chmod, chown ,umask
+# 5 chmod, chown 
     1. chmod (change permission)
     
     chmod u+x script.sh
@@ -72,4 +72,13 @@ Meaning
 6  = rw
 6  = rw
 
+```
+## 2.chowm (Change Ownership)
+Change Owner
+```
+    sudo chown jhon file.txt
+```
+Change Owner Group
+```
+    sudo chown jhon:developer file.txt
 ```
