@@ -39,3 +39,14 @@ w = 2
 x = 1
 
 ```
+Example
+```
+    chmod 755 script.sh
+```
+Meaning
+```
+7  = rwx
+5  = r-x
+5  = r-x
+
+```
