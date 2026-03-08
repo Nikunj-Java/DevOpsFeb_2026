@@ -31,4 +31,11 @@
     Example
      
     chmod g+x file.txt
-     
+## Numerical Method
+Permission Values
+```
+r = 4
+w = 2
+x = 1
+
+```
