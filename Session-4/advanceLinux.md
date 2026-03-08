@@ -71,3 +71,30 @@ Step:3
 ```
 Enter
 ```
+
+# htop: Interactive Process Viewer
+## how to install?
+for windows
+```
+sudo apt install htop -y
+```
+for mac
+```
+brew install htop
+```
+
+## useful htop commands
+```
+press f3: serach a process
+press f9: to kill the process
+press f6: to sort by different metrics
+press q : to exit
+to run htop: htop
+```
+
+## Example:1 
+1. start htop
+2. search(Press F3) for htop
+3. Hit Enter
+4. Kill the process (F9)
+5. Hit Enter
