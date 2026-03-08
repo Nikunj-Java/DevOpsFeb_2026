@@ -103,7 +103,7 @@ Defines Default Permission for new files.
 ```
 4. Default Directory Permission
 ```
-    777 - 022= 755
+    777 - 022 = 755
     meaning
     7 = rwx
     5 = rx
