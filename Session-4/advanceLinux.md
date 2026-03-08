@@ -31,3 +31,28 @@ Sun Mar  8 08:19:01 UTC 2026
     date        = prints current date and time
     >> time.txt = save it in a file
 ```
+# Debugging CPU and Memory
+in Production servers sometime:
+- CPU becomes 100%
+- Memory Becomes full
+- Application becomes slow
+To Monitor this Linux Tools are Available 
+## check CPU Usage
+```
+    top
+```
+## Understanding 'top' output
+```
+line1: uptime Information
+line2: Task Information
+line3: CPU Usage Information
+```
+Keywords used in top
+```
+    %us: user process
+    %sy: system process
+    %ni: nice priority process
+    %id: idle time
+    %wo: waiting time for I/O
+
+```
