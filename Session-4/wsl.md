@@ -39,7 +39,7 @@ w = 2
 x = 1
 
 ```
-Example
+Example-1 
 ```
     chmod 755 script.sh
 ```
@@ -48,5 +48,28 @@ Meaning
 7  = rwx
 5  = r-x
 5  = r-x
+
+```
+Example 2
+```
+    chmod 777 script.sh
+```
+Meaning
+```
+7  = rwx
+7  = rwx
+7  = rwx
+
+```
+
+Example 3
+```
+    chmod 666 script.sh
+```
+Meaning
+```
+6  = rw
+6  = rw
+6  = rw
 
 ```
