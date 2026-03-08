@@ -136,3 +136,44 @@ watch -n 1 free -h
 1. top: for a quick overview of CPU / Memory usage
 2. htop: for an interactive user friendly process monitor as same as top but with colors
 3. free: to check the memory available as a glance
+
+# Exporting information to a file
+Step:1 open wsl
+
+Step:2 Run the Command
+```
+top -b -n 1 > /mnt/c/Users/your_username/Desktop/my_top_output.txt
+
+```
+
+# Significance of Load Average
+```
+uptime
+```
+1. ideal load
+    -if load is <= to no.of CPU Core -> system is running smooth
+    -ex: on 4-core CPU average load of 3.0 is considered to be fine
+2. Overloaded System
+    -if load exceeds  CPU core for a long periods , performance degrades.
+    -ex. on 4 core CPU a load of 8.0 means CPU is Overloaded
+
+# Context Switching
+- context switching occurs when the CPU switches from One Process to another
+
+## how to check context switching in linux?
+```
+sudo apt install vmstat
+sudo apt install sysstat
+```
+1. context switch per second (look at cs)
+```
+vmstat 1 5
+```
+2. show number of context switch over time
+```
+sar -w 1 5
+```
+3. display the context switching since boot
+```
+cat /proc/stat | grep ctxt
+```
