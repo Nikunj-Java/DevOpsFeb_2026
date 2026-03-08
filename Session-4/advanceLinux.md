@@ -46,6 +46,7 @@ To Monitor this Linux Tools are Available
 line1: uptime Information
 line2: Task Information
 line3: CPU Usage Information
+line4: Memory Usage Informtaion
 ```
 Keywords used in top
 ```
@@ -55,4 +56,18 @@ Keywords used in top
     %id: idle time
     %wo: waiting time for I/O
 
+```
+## to kill ant running process the command is
+Step:1
+```
+press : K
+```
+
+Step:2
+```
+enter the PID(Process ID)
+```
+Step:3
+```
+Enter
 ```
