@@ -69,3 +69,41 @@ nikunj     18335  0.0  0.0   4096  1920 pts/2    S+   08:43   0:00 grep --color=
 renice -n 10 -p 18218
 // note : 18218 is the process ID (You can get from 'top' as PID)
 ```
+
+# Context Switching
+- Context Switching : CPU Switching from one process/ thread to another
+- Since CPU can run one process at a time(Per Once), it quicky switches between process to give the illusion of Multitasking
+## What is "Context"?
+- when CPU Pauses a process it must be save:
+- CPU Register the current calculation, Memory State, Stack Information
+- This Saved Data is Called As 'Context'
+## Step By Step Explanation
+## Step 1: Process 'A' is Running
+```
+./script.sh
+```
+- this will register A's Data
+## Step 2: Process 'B' is Running
+```
+./myscript.sh
+```
+- this will register B's Data
+
+## Step:3 Interrupt Happens
+interrupts can be
+- Time Slice Finished
+- i/o request
+- Higher Priority process arrived
+
+## Step:4 Save Context of 'A
+- OS saves :
+    - 1. Registers
+    - 2. Instruction Pointer
+    - 3. Sate
+## Step:5 Load Context of B
+- OS Loads:
+    - 1. B's Register
+    - 2. B's Memory state
+
+## Step:6  Process B runs
+- CPU Start executing B
