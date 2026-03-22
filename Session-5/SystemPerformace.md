@@ -48,3 +48,24 @@ top
 - CPU gives preference to other process
 - System stays smoother
 ```
+## 2. Renice
+- renice = change the priority of a running process
+- lets run the myscript.sh file
+```
+./myscript.sh
+```
+- open the terminal and search for the process
+```
+ps aux | grep myscript.sh
+```
+- example
+```
+nikunj     18218 99.9  0.0   4752  3072 pts/0    R+   08:42   0:19 /bin/bash ./myscript.sh
+nikunj     18335  0.0  0.0   4096  1920 pts/2    S+   08:43   0:00 grep --color=auto myscript.sh
+```
+## Let's Change the Priority using Renice
+
+```
+renice -n 10 -p 18218
+// note : 18218 is the process ID (You can get from 'top' as PID)
+```
