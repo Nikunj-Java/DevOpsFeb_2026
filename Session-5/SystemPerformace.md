@@ -42,4 +42,9 @@ nice -n 10 ./myscript.sh
 ```
 top
 ```
-
+## Conclusion
+```
+- Priority=10 (Lower Priority)
+- CPU gives preference to other process
+- System stays smoother
+```
