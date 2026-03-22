@@ -107,3 +107,85 @@ interrupts can be
 
 ## Step:6  Process B runs
 - CPU Start executing B
+
+## System Health Monitoring
+- open the top or htop
+```
+    top 
+    htop    #optional
+```
+
+you will get an OutPut
+```
+%Cpu(s):  1.0 us,  1.1 sy,  0.0 ni, 97.7 id,  0.0 wa,  0.0 hi,  0.2 si,  0.0 st
+MiB Mem :   7880.2 total,   6136.8 free,   1282.3 used,    636.8 buff/cache
+```
+## Note:
+CPU idel= 5% -> CPU Overload
+Memory Free= very low -> RAM issue
+
+## Identify the CPU- Heavy Process
+- inside the top, look at:-
+```
+ PID USER      %CPU  %MEM     TIME+ COMMAND
+ 464 grafana   2.3   2.5        2:30.59 grafana <--- This is talking High CPU Usage
+ 392 root      1.3   1.3        1:04.60 dockerd
+   1 root      1.0   0.2        1:03.42 systemd
+```
+
+## Identify the Memory- Heavy Process
+Sort by memory
+```
+ shift + M
+```
+Output:
+```
+PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+240 jenkins   20   0 7891744 565952  27372 S   0.7   7.0   2:25.30 java <----Memory Process
+464 grafana   20   0 1617492 200808 131712 S   2.3   2.5   2:33.51 grafana
+392 root      20   0 2863488 103944  61952 S   1.0   1.3   1:05.76 dockerd
+  
+```
+
+# Shortcuts
+1. CPU Usage
+```
+ps aux --sort=-%cpu | head
+```
+
+2. Memory Usage
+```
+ps aux --sort=-%mem | head
+```
+
+- Example Output:
+```
+USER   PID  %CPU  %MEM  COMMAND
+root  3456  92.0  5.0   python script.py
+```
+
+## Conclusion 
+1. Find the proccess and KILL it or restart it
+```
+kill -9 <PID>
+```
+2. or Use htop interface to kill it smmothly with the given commands
+
+## do's and dont's
+1. Avoid closing system default process
+```
+systemd
+sshd
+mysql
+java (unless you know)
+```
+2. Use 'nice' instead of killing
+```
+renice -n 10 -p <PID>
+
+```
+
+3. monitor it Continuosly
+```
+watch -n 1 top
+```
