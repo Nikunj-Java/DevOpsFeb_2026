@@ -62,6 +62,7 @@ iostat -dx -1
 ```
 Output:
 ```
-- %util -> disk usage(close to 100%= bad)
+- %util -> disk usage(close to 100%= bad ,0.00%= Good)
 - await -> latency
+- inShort Disk is Overloaded
 ```
