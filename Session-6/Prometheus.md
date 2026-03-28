@@ -52,7 +52,7 @@ scrape_configs:
 ```
 
 ## Step:3 Restart the Prometheus
-- goto> prometheus> opnen in cmd
+- goto> prometheus> open in cmd
 ```
 prometheus.exe --config.file=prometheus.yml
 
