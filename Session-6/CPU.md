@@ -66,3 +66,56 @@ Output:
 - await -> latency
 - inShort Disk is Overloaded
 ```
+- To find the input and Output i/o Consuming Process
+```
+sudo iotop
+```
+
+# Introduction to SAR
+(System Activity Report)
+- it is command line tool that collect Report and Saves System Performance Data
+- it is part of sysstat package
+- it provides insight of CPU Usage , Memory Utilization , Network Activity
+
+## How to Install ?
+```
+sudo apt update 
+sudo apt install sysstat -y
+```
+## Enable and Start Data Collection
+```
+sudo systemctl enable sysstat
+sudo systemctl start sysstat
+```
+- let's start collecting the data
+```
+sar -u 5 5
+```
+- Note
+```
+  u = CPU Usage Report
+5 5 = Collects data every 5 seconds for 5 iterations
+%user       = CPU rime spent on user process 
+% System    = CPU time Spent on System / Kernel
+% I/Owait   = Time Waiting for I/O Operations
+%idle       = Available CPU Time
+```
+
+- Run
+```
+ sar -S 5 5
+```
+- Note:
+```
+ -S = Swap Usage Statistics
+```
+
+- Run
+
+```
+ sar -d 5 5
+```
+- Note:
+```
+ -d = Disk Memory
+```
