@@ -60,6 +60,15 @@ Untracked files:
         file1.txt
 
 ```
+## Global User Config
+- goto> www.github.com> signup
+- note down your email and created New UserId 
+- using registered email amd Username Configure the same in Your Local Repo
+```
+git config --global user.name "your github username"
+git config --global user.email "your github email"
+```
+
 ## Step:3 Snapshot
 ```
 git commit -m "First Commit"
