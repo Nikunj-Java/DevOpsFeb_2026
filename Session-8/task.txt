@@ -1,6 +1,18 @@
+Task-1
 1. Open Git Bash
 2. Create 5 Files 
 3. Add file1.txt to the stagging
 4. Add Rest all files to the stagging
 5. remove 2nd and 3rd file from stagging
 6. check the git status
+
+Task-2
+1. Create a New folder
+2. add 3 files to the folder
+3. Create a New Repository
+4. do add, commit, push
+5. once the data is uploaded on github repo create new branch locally
+6. create master branch
+7. do add, commit, push
+8. check both branches on git hub
+9. delete the repository
