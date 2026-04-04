@@ -125,8 +125,8 @@ git branch -M main
 git remote add origin https://github.com/Nikunj-Java/DevOps_test.git
 git push -u origin main
 ```
-- copy the branch command(generally 3rd command)
-- copy the origin command (generally 4th command)
+- copy the branch command(generally 4th command)
+- copy the origin command (generally 5th command)
 - copy the push command
 - after using push command it will ask for Authentication
 - add username and password to the browser for Authentication
