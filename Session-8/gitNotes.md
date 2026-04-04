@@ -68,6 +68,12 @@ Untracked files:
 git config --global user.name "your github username"
 git config --global user.email "your github email"
 ```
+- To check the details
+```
+git config --list
+git config user.name
+git config user.email
+```
 
 ## Step:3 Snapshot
 ```
