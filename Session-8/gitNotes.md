@@ -113,3 +113,22 @@ git log --oneline
 git log
 ```
 5. Append Few More Data and follow (1)-(4)
+
+## Step:4 Create Github Repository
+- goto> www.github.com>new repository>Create
+```
+echo "# DevOps_test" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/Nikunj-Java/DevOps_test.git
+git push -u origin main
+```
+- copy the branch command(generally 3rd command)
+- copy the origin command (generally 4th command)
+- copy the push command
+- after using push command it will ask for Authentication
+- add username and password to the browser for Authentication
+- once Authentication is successfull, Data will be added to github
+- open Your Repository in Github and Refresh
