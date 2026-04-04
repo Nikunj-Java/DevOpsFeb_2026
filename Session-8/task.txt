@@ -1,0 +1,6 @@
+1. Open Git Bash
+2. Create 5 Files 
+3. Add file1.txt to the stagging
+4. Add Rest all files to the stagging
+5. remove 2nd and 3rd file from stagging
+6. check the git status
