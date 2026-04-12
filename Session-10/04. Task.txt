@@ -1,0 +1,5 @@
+Arguments To Be Passed
+./calc.sh 8 + 2   # 10
+./calc.sh 10 - 3  # 7
+./calc.sh 4 \* 5  # 20
+./calc.sh 20 / 4  # 5
