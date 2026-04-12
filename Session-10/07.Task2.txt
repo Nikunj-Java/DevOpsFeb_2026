@@ -1,0 +1,6 @@
+Project: Time 10-15 Minutes
+Demostrating wrtiting a simple bash script to automate repetitive task
+(eg Generating Multiple FIles)
+1. Step:1 Create Automatic Directory
+2. Step:2 Create Script That Will Automate 'n' number of file creation within the Directory
+3. Step:3 Print the message of file Completion
