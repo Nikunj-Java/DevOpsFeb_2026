@@ -1,0 +1,7 @@
+1. Running Background Script: create a script that Generates Random File and Folders,
+ also the script writes the data in the files
+How to do this ?
+Step:1 use Shebang
+Step:2 write your logic
+Step:3 make it executable using chmod +x <scriptname>.Shebang
+Step:4 run the script with &
