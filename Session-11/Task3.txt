@@ -1,0 +1,6 @@
+A system administartor wants to monitor log file [/var/log/syslog] 
+for a specific keyword "ERROR"
+The Script Should
+1. wait for the log file to exist: before monitoring
+2. Continuosely check for the keyword "ERROR" using LOOP
+3. Send the notification (echo Message) when an error is detected

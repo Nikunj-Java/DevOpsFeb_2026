@@ -1,5 +1,4 @@
 #!/bin/bash
-
 echo "Checking For Internet Connections..."
 
 until ping -c 1 google.com &>/dev/null; do
