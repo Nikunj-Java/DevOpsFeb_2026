@@ -32,3 +32,19 @@ studnet[city]="Mumbai"
 echo "${student[name]}"
 echo "${student[city]}"
 ```
+
+## How to Iterate ?
+```
+for key in "${!student[@]}"; do
+    echo "$key: ${student[$key]}"
+done
+```
+- Here '${!student[@]}' means Get All Keys
+- if you want to get length of an array
+```
+${#student[@]}
+```
+- if you want to get all values
+```
+${student[@]}
+```
