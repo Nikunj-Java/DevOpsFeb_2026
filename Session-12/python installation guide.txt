@@ -1,0 +1,8 @@
+1. install Python using npm
+> npm install -g python
+    check version: python --version
+2. install Python using Mac
+> brew install python
+3. Install Python Using WSL(Linux)
+> sudo apt install python3 python3-pip -y
+    check version: python3 --version
