@@ -21,6 +21,6 @@ j =10
 
 while j<=20:
     if j == 25:
-        print("Server 25 is up and running!")
+        print(f"Server {j} is up and running!")
         break
     j+=1
