@@ -58,9 +58,11 @@ class Server:
 # Creating an Object
 server1 = Server("Production Server",1.0,2.0)
 
-# Calling Different Methods
+# Calling Different Methods of class using an object
 server1.display_info()
 server1.check_upadte()
 server1.update_server()
 
 ```
+# Inheritance
+- inheritance means one class can use the features of another class like a child and parent relationship, chils can inheritraits from parent
