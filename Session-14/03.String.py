@@ -30,7 +30,7 @@ words=message.strip().split(" ")
 print("9. split():",words)
 
 #10. join the list back into a string with "-"
-print("q0. join():","-".join(words))
+print("10. join():","-".join(words))
 
 #11. check all character are alphabets
 print("11. isalpha():","Hello123".isalpha())
