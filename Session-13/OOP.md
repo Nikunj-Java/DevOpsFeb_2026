@@ -132,7 +132,7 @@ account.withdraw(1500)
 # Polymorphism
 - Poly means 'many forms'
 - same method name but different behavious
-- Here 'pass' is used when You are planning structure First and logic will be added later
+- Here 'pass' is used when You are planning structure First and logic will be added later()
 - Example
 ```
 withdraw():
