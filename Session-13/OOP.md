@@ -128,3 +128,16 @@ account.withdraw(1500)
 - protecting Data From direct Access
 - only allowing access via Methods
 - it wraps the data in such a way that it can be only accessed via methods
+
+# Polymorphism
+- Poly means 'many forms'
+- same method name but different behavious
+- Here 'pass' is used when You are planning structure First and logic will be added later
+- Example
+```
+withdraw():
+- ATM : Different Process
+- Mobile APP: Different Process
+- Bank Branch: Different Process
+- That Means Same Action , different implementation
+```
