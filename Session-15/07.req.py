@@ -1,5 +1,8 @@
 import requests
-url="https://jsonplaceholder.typicode.com/users/1"
+url="https://jsonplaceholder.typicode.com/users/1" #API endpoint
+#url="https://jsonplaceholder.typicode.com/posts/1" #API endpoint
+#url="https://www.google.com" #API endpoint
+
 response=requests.get(url)
 
 print("Status Code:", response.status_code) # 200: OK, 404: Not Found, 500: Internal Server Error
