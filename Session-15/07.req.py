@@ -5,6 +5,12 @@ url="https://jsonplaceholder.typicode.com/users/1" #API endpoint
 
 response=requests.get(url)
 
-print("Status Code:", response.status_code) # 200: OK, 404: Not Found, 500: Internal Server Error
-print("Headers:", response.headers)
-print("Content:", response.text)
+#print("Status Code:", response.status_code) # 200: OK, 404: Not Found, 500: Internal Server Error
+#print("Headers:", response.headers)
+#print("Content:", response.text)
+if(response.status_code==200):
+    data=response.json() # parse JSON response
+    print("User Name:", data["username"])
+    print("Email:", data["email"])
+else:
+    print("Failed to retrieve data. Status Code:", response.status_code)
