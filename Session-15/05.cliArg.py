@@ -13,3 +13,5 @@ parser.add_argument("--empid",type=int,help="Employee ID of the user.",default=1
 
 args=parser.parse_args()
 print(f"Hello, {args.name}! You are {args.age} years Old. Your employee ID is {args.empid}.")
+# open wsl cli=> python3 05.cliArg.py nikunj --age 45 --empid 12345
+# open cmd cli=> python 05.cliArg.py nikunj --age 45 --empid 12345
