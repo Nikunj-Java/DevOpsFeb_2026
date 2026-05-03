@@ -2,7 +2,7 @@ import shutil
 import os
 from datetime import datetime
 
-source="/mnt/d/test_folder" #for windows use: "D:/test_folder"
+source="/mnt/d/important_data" #for windows use: "D:/test_folder"
 backup_dir="/mnt/d/backups" # for windows use: "D:/backups"
 timestamp=datetime.now().strftime("%Y%m%d%H%M%S")
 backup_file=os.path.join(backup_dir,f"backup_{timestamp}.zip")
