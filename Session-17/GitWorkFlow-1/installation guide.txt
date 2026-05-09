@@ -1,0 +1,3 @@
+sudo apt install python3-pytest
+to run pytest locally
+> pytest
