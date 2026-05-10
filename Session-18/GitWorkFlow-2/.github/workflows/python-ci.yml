@@ -11,29 +11,63 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+    #step:1 Checkout Repository
     - name: Checkout code
       uses: actions/checkout@v3
 
+    #step:2 Setup Python
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
         python-version: '3.10'
+
+    #step:3 Install Dependencies
     - name: Install dependencies
       run: pip install pytest
+
+    #step:4 Run Tests
     - name: Run tests
       run: python test_file_writer.py
+
+    #step:5 Create a Source Folder
+    - name: Create Source Folder
+      run: |
+        mkdir -p src
+        cp *.py src/
+
+    #step:6 Package Build Output as ZIP
+    - name: Packaghe Build output as ZIP
+      run: |
+        mkdir output
+        cp -r src output/
+        zip -r build.zip output
+    #step:7 Upload artifacts
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4
+      with: 
+        name: build-zip
+        path: build.zip
+
+    #step:8 Notify Email
     - name: Notify Success Via Email
       if: success()
       uses: dawidd6/action-send-mail@v3
       with:
         server_address: smtp.gmail.com
         server_port: 587
-        username: youremailid@gmail.com
-        password: your app password
+        username: youremail@gmail.com
+        password: jqbz kvfy bwpw pxdi
         subject: "CI Build Success - ${{ github.repository }}"
         body: |
           The Build For ${{ github.repository }} on branch ${{ github.ref_name }} succeded.
           Commit: ${{ github.sha }}
-        to: senderemailid@gmail.com
-        from: youremailid@gmail.com
+           ✔  Test Cases Passed
+           ✔  ZIP Artifact Created
+           ✔  Artifact Uploaded Successfully
+
+           Download Artifact From:
+           ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+        to: senderemail@gmail.com
+        from: youremail@gmail.com@gmail.com
 
