@@ -56,3 +56,14 @@ http://localhost:8080
 ```
 sudo cat /var/jenkins_home/secrets/initialAdminPassword
 ```
+
+## Step:7 Jenkins Root Permissions
+```
+sudo chmod 777 /var/run/docker.sock
+```
+
+# Create a Job
+- we can create many types of Jenkins Job from the list available
+- lets create FreeStyle Project
+- goto> create job or new item > select Freestyleproject> give name
+- 
