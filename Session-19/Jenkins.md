@@ -66,4 +66,9 @@ sudo chmod 777 /var/run/docker.sock
 - we can create many types of Jenkins Job from the list available
 - lets create FreeStyle Project
 - goto> create job or new item > select Freestyleproject> give name
-- 
+- Refer 'Jenkins.md' File
+
+# Integrate Plugins
+> goto> manage jenkins (settings icon)> plugins> available plugins> maven integration > install
+
+# pipeline
