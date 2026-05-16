@@ -47,7 +47,7 @@ sudo systemctl status jenkins
 ```
 sudo systemctl stop jenkins
 ```
-## Step:5 open loaclhost
+## Step:5 open localhost
 - goto> browser> 
 ```
 http://localhost:8080
