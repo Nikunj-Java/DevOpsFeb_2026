@@ -1,0 +1,42 @@
+pipeline{
+    agent any
+    stages {
+        stage ('clone repository')
+        steps{
+            git branch : 'main'
+            url: 'https://github.com/Nikunj-Java/python_jenkins_ci.git'
+        }
+        stage ('check python version')
+        steps{
+            sh 'python3 --version'
+        }
+        stage ('create vertual environment')
+        steps{
+            sh 'python3 -m venv venv'
+        }
+        stage ('Install Dependencies')
+        steps{
+            sh '''
+            . venv/bin/activate
+            pip install --upgrade pip
+            pip install -r requirements.txt
+            '''
+        }
+        stage('Run Test Cases'){
+            steps{
+                sh '''
+                    . venv/bin/activate
+                    pytest
+                '''
+            }
+        }
+    }
+    post {
+        success{
+            echo "Calculator CI Pipline Successful!"
+        }
+        failure{
+            echo "Pipline Failed!"
+        }
+    }
+}
