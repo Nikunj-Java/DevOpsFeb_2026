@@ -78,3 +78,13 @@ driver.quit()
 ```
  python3 scripname.py
 ```
+
+# Task: Automate the given website
+- link:
+```
+https://demoqa.com/automation-practice-form
+```
+## what this script demonstrates
+ - open browser
+ - Enter text
+ - Submit form

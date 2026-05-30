@@ -8,6 +8,8 @@ driver = webdriver.Chrome(
 )
 driver.get("https://facebook.com/")
 
+driver.maximize_window()
+
 email= driver.find_element(By.NAME,"email")
 #assert email.is_displayed()
 #print("Email Field Required")
