@@ -74,3 +74,7 @@ print("Title:", driver.title)
 
 driver.quit()
 ```
+- run using python3
+```
+ python3 scripname.py
+```
