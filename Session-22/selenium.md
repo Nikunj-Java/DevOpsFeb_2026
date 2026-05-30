@@ -84,6 +84,10 @@ driver.quit()
 ```
 https://demoqa.com/automation-practice-form
 ```
+or 
+```
+https://automationexercise.com/login
+```
 ## what this script demonstrates
  - open browser
  - Enter text
