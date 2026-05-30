@@ -1,4 +1,4 @@
-# Selnium Uninstallation
+# Selenium Uninstallation
 ```
 python3 -m pip show selenium
 ```
