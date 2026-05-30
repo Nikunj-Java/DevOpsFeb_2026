@@ -92,3 +92,35 @@ https://automationexercise.com/login
  - open browser
  - Enter text
  - Submit form
+## Solution
+```
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
+import time
+
+options = Options()
+options.add_experimental_option("detach", True)
+
+driver = webdriver.Chrome(options=options)
+
+driver.maximize_window()
+
+driver.get("https://demoqa.com/automation-practice-form")
+
+# First Name
+driver.find_element(By.ID, "firstName").send_keys("Nikunj")
+
+# Last Name
+driver.find_element(By.ID, "lastName").send_keys("Soni")
+
+# Email
+driver.find_element(By.ID, "userEmail").send_keys("nikunj@gmail.com")
+
+ 
+# Mobile Number
+driver.find_element(By.ID, "userNumber").send_keys("9876543210")
+
+ 
+time.sleep(2)
+```
