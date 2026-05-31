@@ -33,7 +33,14 @@
 ![ui](images/image-5.png)
 
 - add protocol, ip, http request, path
-
+- url
+```
+https://jsonplaceholder.typicode.com/todos
+```
+Or
+```
+https://jsonplaceholder.typicode.com/todos
+```
 ![ui](images/image-6.png)
 
 - for checking result press start icon
