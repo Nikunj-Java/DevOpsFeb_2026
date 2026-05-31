@@ -15,4 +15,49 @@
     - extract
     - goto> bin folder> open cmd and wsl
     - run jmeter.bat (for windows) , jmeter.sh (for linux/mac)
+
 ![ui](images/image-1.png)
+
+- Keep the terminal on to work with Jmeter
+
+![ui](images/image-2.png)
+
+## Implement Performance Testing
+
+![ui](images/image-3.png)
+
+![ui](images/image-4.png)
+
+- right click on Thread Group>add>Sampler>HTTP Request
+
+![ui](images/image-5.png)
+
+- add protocol, ip, http request, path
+
+![ui](images/image-6.png)
+
+- for checking result press start icon
+
+![ui](images/image-7.png)
+
+- after clicking start icon click on warnning icon
+![ui](images/image-8.png)
+
+![ui](images/image-9.png)
+
+- Another way of checking result
+
+![ui](images/image-10.png)
+
+![ui](images/image-11.png)
+- click on start button and check result response data
+- once it is generated you can save to file as well
+- click on configure and browse for file name and save data
+
+## Generate Summary Report
+
+![ui](images/image-12.png)
+
+- run again and generate summary report
+
+ ![ui](images/image-13.png)
