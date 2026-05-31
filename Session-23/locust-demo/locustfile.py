@@ -7,3 +7,4 @@ class MyStressTestUser(HttpUser):
     def get_posts_users(self):
         self.client.get("/posts")
         self.client.get("/users")
+      
