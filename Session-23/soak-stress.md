@@ -52,7 +52,7 @@ nano locustfile.py
 locust -f locustfile.py # incase 8089 is busy use below command
 locust -f locustfile.py --web-port 9090
 ```
-![ui](images/image-14.png)
+![alt text](images/image-14.png)
 
 - add users 1000 to see the response in better way
 - click start
