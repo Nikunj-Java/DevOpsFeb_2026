@@ -81,6 +81,7 @@ cd your_project_name
 ```
 /var/lib/jenkins/workspace/locust_pipeline
 ```
+![alt text](images/image-8.png)
 ![alt text](images/image-4.png)
 
 - now create locustfile.py
