@@ -1,4 +1,4 @@
-# Instrauctions
+# Instructions
 
 - to run his project in wsl create Vertual Environment
  
@@ -41,7 +41,7 @@ pip install pytest pytest-cov
 ```
 ## Run test with Coverage
 ```
-Run Tests with Coverage
+coverage run -m pytest
 ```
 ## Generate Coverage.xml
 ```
