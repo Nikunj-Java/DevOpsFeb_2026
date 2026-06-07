@@ -12,3 +12,4 @@ The SonarScanner CLI is a code analysis scanner for CI/CD pipelines, used when n
 ```linux
 ./ sonar-scanner
 ```
+![alt text](images/image-12.png)
