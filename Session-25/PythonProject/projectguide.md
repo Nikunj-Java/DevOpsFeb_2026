@@ -92,6 +92,21 @@ sonar.python.coverage.reportPaths=coverage.xml
 
 sonar.sourceEncoding=UTF-8
 ```
+## Generate Token
+![alt text](../images/image-13.png)
+
+click on (A) username on right side corner at top
+
+![alt text](../images/image-14.png)
+
+- click on security
+
+![alt text](../images/image-15.png)
+
+- Generate Global Token and copy it
+
+![alt text](../images/image-16.png)
+
 
 ## Run with sonar Scanner
 ```
@@ -99,7 +114,11 @@ sonar.sourceEncoding=UTF-8
 -Dsonar.host.url=http://localhost:9000 \
 -Dsonar.token=sqa_dbf1acd6ffb9bf03059f0e1ae8839b77ded4de85 
 ```
+![alt text](../images/image-17.png)
+
 - Here given below is my path of sonar scanner for you it can be different
 ```
 /mnt/c/Users/Admin/Downloads/sonar-scanner-cli-8.0.1.6346-linux-x64/sonar-scanner-8.0.1.6346-linux-x64/bin/sonar-scanner \
 ```
+- goto> browser and refresh sopnarQube Server
+![alt text](../images/image-18.png)
