@@ -101,3 +101,9 @@ Login and click "Proceed" in the "Approval" stage.
 }
 
 ```
+
+![alt text](images/image-6.png)
+
+![alt text](images/image-9.png)
+
+![alt text](images/image-8.png)
