@@ -38,7 +38,7 @@ pipeline {
 
 ```
 - Click on Apply and Save
-- Buld The Pipeline
+- Build The Pipeline
 
 ![Build](images/image-2.png)
 
