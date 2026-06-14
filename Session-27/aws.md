@@ -21,3 +21,24 @@
 - use your registered email id and password and do the login
 
 ![alt text](images/image-7.png)
+
+## Authenticator Application
+- download Microsoft Authenticator Application
+- Goto>AWS>top-right corner, select your name and number
+- choose Security Credential
+
+![alt text](images/image-8.png)
+scroll down to the MultiFactor Authenticator(MFA) section and click Assign MFA Device
+
+![alt text](images/image-9.png)
+
+![alt text](images/image-10.png)
+
+![alt text](images/image-11.png)
+
+![alt text](images/image-12.png)
+
+- Make Sure You are logged in in AWS and Authenticator app using same email id
+![alt text](images/image-13.png)
+
+- You are Done
