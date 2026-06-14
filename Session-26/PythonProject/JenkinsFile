@@ -10,7 +10,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 git branch: 'main',
-                url: 'https://github.com/user/python-project.git'
+                url: 'https://github.com/Nikunj-Java/Python_Sonar_Jenkins_Project.git'
             }
         }
 
