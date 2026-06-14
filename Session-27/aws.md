@@ -115,3 +115,61 @@ scroll down to the MultiFactor Authenticator(MFA) section and click Assign MFA D
 
 ## Dashboard
 ![alt text](images/image-32.png)
+
+## Terminate The Instance
+![alt text](images/image-33.png)
+
+
+# Connect to Your Instance
+- choose your instance> click on connect
+![alt text](images/image-34.png)
+
+![alt text](images/image-35.png)
+- choose 'EC2 Instance Connect'
+- scrool down and click on connect
+- Change the user name if needed and click on connect
+![alt text](images/image-36.png)
+
+- wait for come time and you will be connected
+
+![alt text](images/image-37.png)
+
+## Install Server on AWS Instance
+```
+sudo su -
+yum install httpd -y
+cd /var/www/html
+
+vi index.html
+```
+- press 'i' to insert into html page
+
+```
+<h1>Welcome to PWSKILLS</h1>
+``` 
+- press: esc 
+- write below command to exit
+```
+:wq!
+```
+- Hit Enter Button
+- Start The Service
+```
+service httpd start
+``` 
+- Check with Localhost
+```
+curl localhost
+```
+- OUTPUT:
+```
+<h1>Welcome to PWSKILLS</h1>
+```
+- Reference:
+
+![alt text](images/image-38.png)
+
+- Goto> AWS>copy Public_ip
+- goto> browser> public_ip:80
+[if no output is working check the security groups for networking]
+![alt text](images/image-39.png)
