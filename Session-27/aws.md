@@ -170,6 +170,7 @@ curl localhost
 ![alt text](images/image-38.png)
 
 - Goto> AWS>copy Public_ip
+![alt text](images/image-40.png)
 - goto> browser> public_ip:80
 [if no output is working check the security groups for networking]
 ![alt text](images/image-39.png)
