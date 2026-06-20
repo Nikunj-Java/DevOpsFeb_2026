@@ -1,21 +1,30 @@
 ---
-- name: Install nginx Server
+- name: Install and Configure Nginx
   hosts: aws1
-  become: yes
+  become: true
+
   tasks:
-  - name: Install Nginx
-    yum:
-      name: nginx
-      state: present
-  
-  - name: copy html file to default location
-    copy:
-      src: index.html
-      dest: /usr/share/nginx/html/index.html
-      mode: 0644
-      
-  - name: Start Nginx
-    service: 
-      name: nginx
-      state: started
-      enabled: yes
+
+    - name: Install nginx
+      yum:
+        name: nginx
+        state: present
+
+    - name: Copy index.html
+      copy:
+        src: index.html
+        dest: /usr/share/nginx/html/index.html
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Start and enable nginx
+      systemd:
+        name: nginx
+        state: started
+        enabled: true
+
+    - name: Ensure nginx is running
+      service:
+        name: nginx
+        state: started
