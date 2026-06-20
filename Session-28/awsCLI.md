@@ -24,6 +24,9 @@ aws-cli/2.33.2 Python/3.13.11 Linux/6.6.87.2-microsoft-standard-WSL2 exe/x86_64.
 
 ![alt text](images/image-2.png)
 
+- choose ec2 Full Access
+![alt text](images/image-22.png)
+
 ![alt text](images/image-4.png)
 
 ![alt text](images/image-5.png)
