@@ -1,0 +1,30 @@
+---
+- name: Install MySQL on Ubuntu
+  hosts: server1
+  become: yes
+
+  tasks:
+
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install MySQL Server
+      apt:
+        name: mysql-server
+        state: present
+
+    - name: Start and Enable MySQL
+      service:
+        name: mysql
+        state: started
+        enabled: yes
+
+    - name: Check MySQL Status
+      command: systemctl is-active mysql
+      register: mysql_status
+      changed_when: false
+
+    - name: Display MySQL Status
+      debug:
+        msg: "MySQL Status: {{ mysql_status.stdout }}"
