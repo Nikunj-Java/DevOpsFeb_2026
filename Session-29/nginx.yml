@@ -1,0 +1,25 @@
+---
+- name: Install Nginx Server
+  hosts: aws1
+  become: yes
+
+  tasks:
+
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: present
+    - name: Copy the HTML File To Default Location
+      copy: 
+        src: index.html
+        dest: /var/www/html/index.html
+        mode: '0644'
+    - name: Start and Enabled Nginx
+      service:
+        name: nginx
+        state: started
+        enabled: yes
