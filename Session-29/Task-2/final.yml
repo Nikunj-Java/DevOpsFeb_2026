@@ -1,42 +1,46 @@
 ---
-- name: install packages
+- name: Install packages
   hosts: server1
   become: true
 
   tasks:
-  - name: Update API packages
-    apt:
-      update_cache: yes
-  - name: Install Git and Curl
-    apt:
-      name:
-        - git 
-        - curl
-        - mysql-server
-      state: present
-  - name: Start and Enable MySQL
+
+    - name: Update apt packages
+      apt:
+        update_cache: yes
+
+    - name: Install Git, Curl and MySQL
+      apt:
+        name:
+          - git
+          - curl
+          - mysql-server
+        state: present
+
+    - name: Start and Enable MySQL
       service:
         name: mysql
         state: started
         enabled: yes
 
-  - name: Check MySQL Status
-    command: systemctl is-active mysql
-    register: mysql_status
-    changed_when: false
+    - name: Check MySQL Status
+      command: systemctl is-active mysql
+      register: mysql_status
+      changed_when: false
 
-  - name: Git Version
-    command: git --version
-    register: git_version
+    - name: Git Version
+      command: git --version
+      register: git_version
+      changed_when: false
 
-  - name: Curl Version
-    command: curl --version
-    register: curl_version
-    
-  - name: Show Git and Curl Version
-    debug:
-     msg: 
-      - "Git Version {{git_version}}"
-      - "Curl Version {{curl_version}}"
-      - "MySQL Status{{ mysql_status.stdout }}"
-    
+    - name: Curl Version
+      command: curl --version
+      register: curl_version
+      changed_when: false
+
+    - name: Show Git, Curl and MySQL Status
+      debug:
+        msg:
+          - "Git Version: {{ git_version.stdout }}"
+          - "Curl Version: {{ curl_version.stdout_lines[0] }}"
+          - "MySQL Status: {{ mysql_status.stdout }}"
