@@ -58,7 +58,7 @@ all:
         state: started
         enabled: yes
 ```
-## Step:3 Run The Ansiblee Playbook
+## Step:3 Run The Ansible Playbook
 ```
 sudo ansible-playbook -i inventory.yml nginx.yml
 ```
