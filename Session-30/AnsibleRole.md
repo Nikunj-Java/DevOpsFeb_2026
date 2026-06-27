@@ -66,6 +66,7 @@ Each role does one Job
 ansible-galaxy role init roles/webserver 
 # you can see folder named webserver under roles
 ```
+![alt text](image-1.png)
 ## Give main logic
 - tasks/main.yml(edit this)
 ```
