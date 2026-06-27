@@ -74,6 +74,7 @@ ansible-galaxy role init roles/webserver
   apt:
     name: nginx
     state: present
+    update_cache: yes
 ```
 
 ## Handlers: triggered by notify, used for restart
@@ -117,8 +118,7 @@ nginx_port: 8080
 ## Meta
 - edit meta/main.yml
 ```
-dependencies:
-    - role: common
+dependencies: []
 ```
 ## How to use Role under playbook
 - create playbook.yml
@@ -131,3 +131,19 @@ dependencies:
   roles:
     - webserver
 ```
+
+## Create AWS UBUNTU Instance
+- Keep Network Setting for  PORT
+  - 80
+  - 8080
+- Save the .pem key to the root folder of this project
+
+## Run the Project
+```
+sudo ansible-playbook -i inventory.yml playbook.yml
+```
+## Open AWS
+- goto> aws instance> copy ip address> paste in browser
+(it will take upto 2-5 minutes to become live)
+
+![alt text](image-2.png)

@@ -4,6 +4,7 @@
   apt:
     name: nginx
     state: present
+    update_cache: yes
 # ADD THIS CODE
 - name: copy file
   copy:

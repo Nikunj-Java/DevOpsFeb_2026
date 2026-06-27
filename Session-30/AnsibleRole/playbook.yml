@@ -1,0 +1,8 @@
+---
+- name: Demo for Roles
+  hosts: server1
+  become: true
+
+  roles:
+    - webserver
+     

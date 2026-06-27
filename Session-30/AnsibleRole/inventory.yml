@@ -1,0 +1,6 @@
+all:
+  hosts:
+    server1:
+      ansible_host: 35.172.185.207
+      ansible_user: ubuntu
+      ansible_ssh_private_key_file: AnsibleNginx.pem
