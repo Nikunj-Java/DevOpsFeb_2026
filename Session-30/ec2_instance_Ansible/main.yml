@@ -1,0 +1,8 @@
+---
+- name: Create AWS ec2 Instance
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  roles:
+    - create_ec2

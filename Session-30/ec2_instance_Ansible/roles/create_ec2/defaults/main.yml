@@ -1,0 +1,15 @@
+---
+# defaults file for roles/create_ec2
+instance_type: t2.micro
+
+ami_id: ami-0c02fb55956c7d316
+
+key_name: AnsibleNginx
+
+security_group: launch-wizard-1
+
+subnet_id: subnet-xxxxxxxx
+
+instance_name: Demo-Ansible
+
+region: us-east-1

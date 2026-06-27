@@ -1,0 +1,37 @@
+---
+# tasks file for roles/create_ec2
+- name: Create EC2 Instance
+  amazon.aws.ec2_instance:
+
+    name: "{{ instance_name }}"
+
+    key_name: "{{ key_name }}"
+
+    instance_type: "{{ instance_type }}"
+
+    image_id: "{{ ami_id }}"
+
+    region: "{{ region }}"
+
+    security_group: "{{ security_group }}"
+
+    network:
+      subnet_id: "{{ subnet_id }}"
+
+    wait: true
+
+    count: 1
+
+    tags:
+      Environment: Dev
+      Owner: Ansible
+
+  register: ec2
+  # Display Instance Information
+- name: Dipslay Instance Details
+  debug:
+    var: ec2.instnaces
+  # Display Public IP
+- name: Show Public IP
+  debug:
+    msg: "{{ ec2.instances[0].public_ip_address }}"
