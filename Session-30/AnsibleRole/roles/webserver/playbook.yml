@@ -1,0 +1,7 @@
+---
+- name: Demo For roles
+  hosts: server1
+  becomes: true
+
+  roles:
+    - webserver

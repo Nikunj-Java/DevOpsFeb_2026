@@ -1,0 +1,3 @@
+---
+# vars file for roles/webserver
+nginx_port: 80

@@ -1,0 +1,12 @@
+---
+# tasks file for roles/webserver
+- name: install nginx
+  apt:
+    name: nginx
+    state: present
+# ADD THIS CODE
+- name: copy file
+  copy:
+    src: index.html # this lookup file in files
+    dest: /var/www/html/index.html
+
