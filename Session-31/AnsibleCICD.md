@@ -37,3 +37,13 @@ Username: ubuntu
 ![alt text](images/image-8.png)
 
 ## Step:3 Push the code to the Github Repository
+
+![alt text](images/image-10.png)
+
+![alt text](images/image-9.png)
+
+## Step:4 Check NGINX Server 
+- copy the ip address of aws port and run on browser
+- note: wait for 2-5 minutes
+ 
+![alt text](images/image-11.png)
