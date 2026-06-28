@@ -1,0 +1,7 @@
+aws_region: us-east-1
+key_name: AnsibleNginx
+ami_id: ami-0b6d9d3d33ba97d99
+instnace_type: t2.micro
+tag_name: dev-instnace
+security_group_name: launch-wizard-7
+environment: dev

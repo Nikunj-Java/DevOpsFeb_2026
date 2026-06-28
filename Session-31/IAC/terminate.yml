@@ -1,0 +1,23 @@
+---
+- name: Launch EC2 Instance
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars_files:
+    - group_var/all.yml
+
+  tasks:
+    - name: Terminate an instance
+      amazon.aws.ec2_instance:
+        state: absent
+        filters:
+          "tag:Name" : "{{ tag_name }}"
+          instance-state-name: running
+        region: "us-east-1"
+        # to stop single instance based on name
+      register: ec2_result
+
+    - name: Output Instance ec2_result
+      debug:
+        var: ec2_result

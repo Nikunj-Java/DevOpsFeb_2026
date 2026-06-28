@@ -1,0 +1,28 @@
+---
+- name: Create EC2 Instance
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars_files:
+    - group_var/all.yml
+
+  tasks:
+    - name: Launch EC2
+      amazon.aws.ec2_instance:
+        name: " {{ tag_name}} " 
+        key_name: "{{ key_name }}"
+        instance_type: "{{ instnace_type }}"
+        image_id: "{{ ami_id}}"
+        region: "{{aws_region}}"
+        security_group: "{{security_group_name}}"
+        wait: true
+      register: ec2
+
+    - name: Show EC2 Details
+      debug:
+        var: ec2
+
+    - name: Print Public IP
+      debug:
+        msg: "Public IP: {{ ec2.instances[0].public_ip_address }}"
