@@ -42,8 +42,10 @@ Username: ubuntu
 
 ![alt text](images/image-9.png)
 
+[Ansible Github Project](https://github.com/Nikunj-Java/AnsibleCICD)
+
 ## Step:4 Check NGINX Server 
 - copy the ip address of aws port and run on browser
 - note: wait for 2-5 minutes
- 
+
 ![alt text](images/image-11.png)
