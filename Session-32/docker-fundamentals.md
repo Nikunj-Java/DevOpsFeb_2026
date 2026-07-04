@@ -222,6 +222,9 @@ sudo docker pull mysql:5.7
 - to remove images make sure it is not used in any container
 - if any container uses the Docker image, First Stop that container and then try to remove the image
 ```
+docker ps -a
+```
+```
 sudo docker rmi mysql
 sudo docker rmi ubuntu
 sudo docker rmi getting-started
