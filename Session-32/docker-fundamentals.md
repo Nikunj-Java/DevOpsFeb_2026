@@ -1,4 +1,4 @@
-# Docker FUndamentals
+# Docker Fundamentals
 ## Working of VM
 ![alt text](images/VM.png)
 - Each Virtual Machine Has its own OS - Bulky
@@ -63,3 +63,99 @@
 ```
 ## Docker Architecture
 ![alt text](<images/Docker Architecture.png>)
+
+## How to start with docker ?
+- Install dokcer in linux/Ubuntu [Reference Link](https://docs.docker.com/engine/install/ubuntu/)
+
+```
+# Add Docker's official GPG key:
+sudo apt update
+sudo apt install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+# Add the repository to Apt sources:
+sudo tee /etc/apt/sources.list.d/docker.sources <<EOF
+Types: deb
+URIs: https://download.docker.com/linux/ubuntu
+Suites: $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}")
+Components: stable
+Architectures: $(dpkg --print-architecture)
+Signed-By: /etc/apt/keyrings/docker.asc
+EOF
+
+sudo apt update
+
+sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+sudo systemctl status docker
+
+sudo systemctl start docker
+
+docker --version
+
+sudo docker version
+```
+[Windows Setup](https://docs.docker.com/desktop/setup/install/windows-install/)
+[Mac Setup](https://docs.docker.com/desktop/setup/install/mac-install/)
+
+## Understand Command Execution
+```
+sudo docker run hello-world
+# hello-world is the image
+# if if image is not available locally Docker Daemon will Download from Docker Hub
+# and container executed when you create the container and see the output
+```
+- OUTPUT: 
+```
+Unable to find image 'hello-world:latest' locally
+latest: Pulling from library/hello-world
+4f55086f7dd0: Pull complete
+d5e71e642bf5: Download complete
+Digest: sha256:96498ffd522e70807ab6384a5c0485a79b9c7c08ca79ba08623edcad1054e62d
+Status: Downloaded newer image for hello-world:latest
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+```
+- list the images
+```
+sudo docker ps
+```
+- output:
+```
+hello-world:latest                                               96498ffd522e       25.9kB         9.49kB    U
+```
+- list all container
+```
+sudo docker ps -a
+```
+
+## Example: Working with MYSQL
+```
+sudo docker pull mysql
+sudo docker images
+```
+- output:
+```
+mysql:latest                                                                                        ad88e1c86cbf       1.28GB          288MB
+```
