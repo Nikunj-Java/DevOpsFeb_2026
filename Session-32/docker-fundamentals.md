@@ -159,3 +159,46 @@ sudo docker images
 ```
 mysql:latest                                                                                        ad88e1c86cbf       1.28GB          288MB
 ```
+-------------------------------------------------------------------------
+## Exercise:1
+-------------------------------------------------------------------------
+1. pull the images
+```
+sudo docker pull docker/getting-started
+```
+2. list the image
+```
+sudo docker images
+```
+3. Run the Container with Specific Port Number
+```
+sudo docker run -p 80:80 docker/getting-started
+```
+4. if you want to run containeer in Background (just add -d)
+```
+sudo docker run -p 80:80 -d docker/getting-started
+```
+5. get the list of containers running
+```
+sudo docker containers ls
+```
+6. check the output on Browser
+```
+http://localhost:80
+```
+7. To Stop Container
+```
+ sudo docker stop <name of container>
+```
+8. To Start Container
+```
+sudo docker start <name_of_container>
+```
+9. To Remove Container
+```
+sudo docker rm <name_of_container>
+```
+10. TO Remove Container Forcefully 
+```
+sudo docker rm -f <name_of_container>
+```
