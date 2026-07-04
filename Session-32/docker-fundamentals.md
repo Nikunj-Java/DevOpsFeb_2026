@@ -180,7 +180,7 @@ sudo docker run -p 80:80 -d docker/getting-started
 ```
 5. get the list of containers running
 ```
-sudo docker containers ls
+sudo docker container ls
 ```
 6. check the output on Browser
 ```
@@ -201,4 +201,28 @@ sudo docker rm <name_of_container>
 10. TO Remove Container Forcefully 
 ```
 sudo docker rm -f <name_of_container>
+```
+
+------------------------------------------------------------------------------
+Exercise: 2 Pull the Available images from docker Registry
+------------------------------------------------------------------------------
+- 1. pull ubuntu from registry
+```
+sudo docker pull ubuntu
+```
+- 2. pull ubuntu from registry
+```
+sudo docker pull mysql
+```
+- 3. pull ubuntu from registry with specific version
+```
+sudo docker pull mysql:5.7
+```
+## Remove Images 
+- to remove images make sure it is not used in any container
+- if any container uses the Docker image, First Stop that container and then try to remove the image
+```
+sudo docker rmi mysql
+sudo docker rmi ubuntu
+sudo docker rmi getting-started
 ```
