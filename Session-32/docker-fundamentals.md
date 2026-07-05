@@ -229,3 +229,45 @@ sudo docker rmi mysql
 sudo docker rmi ubuntu
 sudo docker rmi getting-started
 ```
+------------------------------------------------------------------------------
+Exercise: 3 Pull The Custom Image(Git Hub)
+------------------------------------------------------------------------------
+- github repo: [Docker Master](https://github.com/Nikunj-Java/docker_master.git)
+- 1. clone the repositorty
+```
+git clone https://github.com/Nikunj-Java/docker_master.git
+```
+- 2. get the list of directory
+```
+ls
+```
+- 3. Prepare image in docker container
+```
+sudo docker build -t dockermaster .
+```
+- note: Here (.) is mendatory
+
+- 4. check the image
+```
+sudo docker images
+```
+
+- 5. run the container
+```
+sudo docker run -d --name mycontainer1 -p 80:80 dockermaster
+```
+- Note: 
+   - mycobtainer1 : name of your custom container
+   - dockermaster : name of your github image
+- 6. check the container
+```
+sudo docker container ls
+```
+Rr
+```
+sudo docker ps -a
+```
+- 7. Open in Browser
+```
+http://localhost:80
+```
