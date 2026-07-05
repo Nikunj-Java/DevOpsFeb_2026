@@ -358,3 +358,52 @@ sudo docker logs myapp
 ```
 http://localhost:3001
 ```
+---------------------------------------------------------------------------------------
+## Exercise: 5 Push Node js Application to Guthub and Build The Custom Image(Git Hub)
+---------------------------------------------------------------------------------------
+- upload file to the Github Repository and Follow Exercise: 3 Pull The Custom Image(Git Hub)
+- Note: while creating container expose port no: 3001
+
+---------------------------------------------------------------------------------------
+## Exercise: 5 Push The Images in Docker HUB
+---------------------------------------------------------------------------------------
+[Sign Up](https://hub.docker.com)
+- make sure You remember your username and password
+- lets push the image to dockerHub
+- 1. give a tag to the docker image
+```
+sudo docker tag <yourimagename> <yourusername>/<yourimagename>
+```
+- Eg:
+```
+sudo docker tag mynodeapp nikunj0510/mynodeapp
+```
+- Do the Login 
+```
+sudo docker login
+```
+- login using your username and password
+- output: 
+```
+Authenticating with existing credentials... [Username: yourusername]
+
+i Info → To login with a different account, run 'docker logout' followed by 'docker login'
+
+
+Login Succeeded
+```
+- if not working:
+```
+sudo docker login -u nikunj0510
+```
+- after add your password
+[password will not be visible]
+
+- push the image
+```
+sudo docker push <yourusername>/<yourimagename>
+```
+- Eg:
+```
+sudo docker push nikunj0510/mynodeapp
+```
