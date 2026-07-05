@@ -331,7 +331,7 @@ RUN npm install
 COPY . .
 
 # EXPOSE PORT
-EXPOSE 3000
+EXPOSE 3001
 
 # RUN APP
 CMD ["node","index.js"]
