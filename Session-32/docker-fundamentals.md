@@ -257,13 +257,13 @@ sudo docker images
 sudo docker run -d --name mycontainer1 -p 80:80 dockermaster
 ```
 - Note: 
-   - mycobtainer1 : name of your custom container
+   - mycontainer1 : name of your custom container
    - dockermaster : name of your github image
 - 6. check the container
 ```
 sudo docker container ls
 ```
-Rr
+Or
 ```
 sudo docker ps -a
 ```
@@ -271,3 +271,4 @@ sudo docker ps -a
 ```
 http://localhost:80
 ```
+- Note: (if not working in normal browser, open it with incognito window)
