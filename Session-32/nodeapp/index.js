@@ -2,7 +2,6 @@
 const http = require('http');
 
 // Define the server host and port
-const hostname = '127.0.0.1';
 const port = 3001;
 
 // Create the HTTP server instance
@@ -16,6 +15,6 @@ const server = http.createServer((req, res) => {
 });
 
 // Start listening for incoming network requests
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+server.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}/`);
 });

@@ -290,7 +290,6 @@ npm init -y
 const http = require('http');
 
 // Define the server host and port
-const hostname = '127.0.0.1';
 const port = 3001;
 
 // Create the HTTP server instance
@@ -304,9 +303,10 @@ const server = http.createServer((req, res) => {
 });
 
 // Start listening for incoming network requests
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+server.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}/`);
 });
+
 
 ```
 - Note Run This Application Locally Before Starting With Docker Images (move to app folder and run 'node index.js')
@@ -352,4 +352,9 @@ sudo docker run -d --name nodecontainer1 -p 3001:3001 mynodeapp
 sudo docker container ls
 sudo docker ps -a
 sudo docker logs myapp
+```
+
+## Step:5 Open Browser
+```
+http://localhost:3001
 ```
