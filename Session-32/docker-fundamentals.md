@@ -204,7 +204,7 @@ sudo docker rm -f <name_of_container>
 ```
 
 ------------------------------------------------------------------------------
-Exercise: 2 Pull the Available images from docker Registry
+## Exercise: 2 Pull the Available images from docker Registry
 ------------------------------------------------------------------------------
 - 1. pull ubuntu from registry
 ```
@@ -230,7 +230,7 @@ sudo docker rmi ubuntu
 sudo docker rmi getting-started
 ```
 ------------------------------------------------------------------------------
-Exercise: 3 Pull The Custom Image(Git Hub)
+## Exercise: 3 Pull The Custom Image(Git Hub)
 ------------------------------------------------------------------------------
 - github repo: [Docker Master](https://github.com/Nikunj-Java/docker_master.git)
 - 1. clone the repositorty
@@ -272,3 +272,63 @@ sudo docker ps -a
 http://localhost:80
 ```
 - Note: (if not working in normal browser, open it with incognito window)
+------------------------------------------------------------------------------
+## Exercise: 4 Create Node js Application and Docker File
+------------------------------------------------------------------------------
+## Step:1 Node.js Application
+- create new folder 'nodeapp' 
+```
+mkdir nodeapp
+```
+- create node environment
+```
+npm init -y
+```
+- create index.js
+```
+console.log("Welcome to Node Application");
+```
+- Note Run This Application Locally Before Starting With Docker Images (move to app folder and run 'node index.js')
+- Node js Application Runs on port 3000
+- if you don not have node js download from here [Node Js](https://nodejs.org/en/download)
+
+## Step:2 Dockerfile
+``` 
+# Base Image
+FROM node:22-alpine
+
+# Set Working Directory
+WORKDIR /app
+
+# copy package.json
+COPY package.json .
+
+# install dependencies
+RUN npm install
+
+# Copy other files and folders
+COPY . .
+
+# EXPOSE PORT
+EXPOSE 3000
+
+# RUN APP
+CMD ["node","index.js"]
+```
+
+## Step:3 Build Docker Image
+```
+sudo docker build -t mynodeapp .
+# build to build an image
+# -t target(tag) name of image
+# . inidicates location of Dockerfile which is root location
+sudo docker images
+```
+
+## Step:4 Deploy Docker Image To Docker Container
+```
+sudo docker run -d --name nodecontainer1 -p 3001:3001 mynodeapp
+sudo docker container ls
+sudo docker ps -a
+sudo docker logs myapp
+```
