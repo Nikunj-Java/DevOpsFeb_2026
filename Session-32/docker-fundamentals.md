@@ -365,7 +365,7 @@ http://localhost:3001
 - Note: while creating container expose port no: 3001
 
 ---------------------------------------------------------------------------------------
-## Exercise: 5 Push The Images in Docker HUB
+## Exercise: 6 Push The Images in Docker HUB
 ---------------------------------------------------------------------------------------
 [Sign Up](https://hub.docker.com)
 - make sure You remember your username and password
@@ -408,7 +408,7 @@ sudo docker push <yourusername>/<yourimagename>
 sudo docker push nikunj0510/mynodeapp
 ```
 
-## Exercise: 6 CREATING MYSQL DATABASE IN DOCKER CONTAINER
+## Exercise: 7 CREATING MYSQL DATABASE IN DOCKER CONTAINER
 ```
 sudo docker pull mysql
 sudo docker images
@@ -438,10 +438,103 @@ mysql -u root -h 127.0.0.1 -P 3306 -p
 ```
 password
 ```
-
-## Exercise: 7 CREATING MYSQL DATABASE IN DOCKER CONTAINER in AWS
+----------------------------------------------------------------------------------------------
+## Exercise: 8 CREATING MYSQL DATABASE IN DOCKER CONTAINER in AWS
+----------------------------------------------------------------------------------------------
 - create Ec2 Instance (Ubuntu)
 - install docker
 - check docker version
 - repeat Exercise: 6 CREATING MYSQL DATABASE IN DOCKER CONTAINER
-- instead of loaclhost use: ec2 instance Public IP Address
+- instead of localhost use: ec2 instance Public IP Address
+
+----------------------------------------------------------------------------------------------
+## Exercise: 9 Docker Swarm
+----------------------------------------------------------------------------------------------
+- Docker swarm is used to deploy and manage Application as a service
+- When You run Docker(sudo docker run) it creates single container But a service manages one or more containers(called as tasks) and ensures they stay running
+- if one of the container fails(crash) it automatically restarts it
+- using docker swarm
+```
+sudo docker service create --name web -p 80:80 nginx
+```
+- docker swarm will
+   - Create the container
+   - Automatically restarts it if it crashes
+   - Schedule it on any available node in swarm
+   - Make it easy to scale to multiple replicas
+   - load balances incoming traffic
+- lets init Docker Swarm
+```
+sudo docker swarm init --advertise-addr 127.0.0.1
+```
+for AWS EC2 Instnace
+```
+sudo docker swarm init --advertise-addr AWS_PUBLIC_IP_ADD
+```
+- output:
+```
+Swarm initialized: current node (1e97eioetqalh1a0v7cua7tfz) is now a manager.
+
+To add a worker to this swarm, run the following command:
+
+    docker swarm join --token SWMTKN-1-0vojo7kf8qmoesalnb08dlwswkhetenyqtjoh4boh7xyho0jk6-2xck9az2nqgsui2l43wjlv2wu 127.0.0.1:2377
+
+To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.
+```
+- Create an NGINX Service
+```
+docker service create --name mynginx -p 80:80 nginx
+```
+- check Services
+```
+docker service ls
+```
+- check running tasks
+```
+docker service ps mynginx
+```
+## Create Multiple Replicas 
+```
+docker service create \
+--name webapp \
+--replicas 3 \
+-p 8080:80 \
+nginx
+```
+- Docker swarm Creates
+```
+                  web service
+                       |
+                 --------------
+                 |            |
+                 |            |
+                 Container 1
+                 Container 2
+                 Container 3    
+
+```
+- if container 2 fails 
+- docker swarm automatically create a new container 2
+- Try Deleting one of the container mannually , swarm will automatically create new one
+```
+sudo docker rm -f name_of_container
+```
+- wait for 10 seconds and check again , a new container will be preparaed automatically
+```
+sudo docker container ls
+```
+## Scale a Service
+```
+sudo docker service scale webapp=5
+```
+
+## Difference Between docker run and docker service create
+| Feature            | `docker run`        | `docker service create`  |
+| ------------------ | ------------------- | ------------------------ |
+| Creates            | One container       | A managed service        |
+| Auto restart       | No                  | Yes                      |
+| Scaling            | Manual              | Automatic (`--replicas`) |
+| Load balancing     | No                  | Yes                      |
+| Multi-host support | No                  | Yes (Docker Swarm)       |
+| Self-healing       | No                  | Yes                      |
+| Suitable for       | Development/testing | Production deployments   |
