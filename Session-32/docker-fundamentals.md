@@ -442,6 +442,7 @@ password
 ## Exercise: 8 CREATING MYSQL DATABASE IN DOCKER CONTAINER in AWS
 ----------------------------------------------------------------------------------------------
 - create Ec2 Instance (Ubuntu)
+- enable 3306 port in inbound rule in networking
 - install docker
 - check docker version
 - repeat Exercise: 6 CREATING MYSQL DATABASE IN DOCKER CONTAINER
