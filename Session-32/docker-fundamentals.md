@@ -412,7 +412,7 @@ sudo docker push nikunj0510/mynodeapp
 ```
 sudo docker pull mysql
 sudo docker images
-docker run --name my-app-db \
+sudo docker run --name my-app-db \
 -e MYSQL_ROOT_PASSWORD=password \
 -d -p 3306:3306 mysql
 ```
@@ -438,3 +438,10 @@ mysql -u root -h 127.0.0.1 -P 3306 -p
 ```
 password
 ```
+
+## Exercise: 7 CREATING MYSQL DATABASE IN DOCKER CONTAINER in AWS
+- create Ec2 Instance (Ubuntu)
+- install docker
+- check docker version
+- repeat Exercise: 6 CREATING MYSQL DATABASE IN DOCKER CONTAINER
+- instead of loaclhost use: ec2 instance Public IP Address
