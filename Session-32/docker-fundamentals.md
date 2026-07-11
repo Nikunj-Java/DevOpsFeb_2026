@@ -407,3 +407,34 @@ sudo docker push <yourusername>/<yourimagename>
 ```
 sudo docker push nikunj0510/mynodeapp
 ```
+
+## Exercise: 6 CREATING MYSQL DATABASE IN DOCKER CONTAINER
+```
+sudo docker pull mysql
+sudo docker images
+docker run --name my-app-db \
+-e MYSQL_ROOT_PASSWORD=password \
+-d -p 3306:3306 mysql
+```
+- Install MySQL CLI
+```
+sudo apt update
+sudo apt install mysql-client
+mysql --version
+```
+- if you are working on Ubuntu(Linux) Locally Then Use This IP
+```
+127.0.0.1
+```
+- if you are working on AWS Then Use AWS Public IP(EC2 Instance)
+```
+3.88.70.216
+```
+- connect with Mysql
+```
+mysql -u root -h 127.0.0.1 -P 3306 -p
+```
+- Enter the password
+```
+password
+```
