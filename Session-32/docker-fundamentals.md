@@ -539,3 +539,46 @@ sudo docker service scale webapp=5
 | Multi-host support | No                  | Yes (Docker Swarm)       |
 | Self-healing       | No                  | Yes                      |
 | Suitable for       | Development/testing | Production deployments   |
+
+-----------------------------------------------------------------------------------------------
+## Docker Compose
+-----------------------------------------------------------------------------------------------
+- if you want to communicate between container then they must be run under one network
+- docker compose is a tool which is used to define and manage multi-container Docker Application
+- Let's Create Application
+
+```
+My Project
+|
+|-------backend
+|        |-------app.py
+|        |-------requirenment.txt
+|        |-------Dockerfile
+|-------frontend
+|        |-------index.html
+|        |-------Dockerfile
+|
+|-------docker-conpose.yml
+
+```
+## Step:1 Docker Compose Installation
+```
+sudo apt install docker-compose
+```
+## Step:2 Create The Apllication with Given Folder Structure
+```
+
+```
+
+## Step:3 Run Docker-Compose
+```
+sudo docker-compose up --build
+```
+## Step:4 Test The API
+```
+
+```
+## Step:5 Stop Docker-Compose
+```
+sudo docker-compose down
+```
