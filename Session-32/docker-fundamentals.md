@@ -566,9 +566,9 @@ My Project
 sudo apt install docker-compose
 ```
 ## Step:2 Create The Apllication with Given Folder Structure
-```
+ 
 [Docker Compose](../Session-35/docker-compose-app)
-```
+ 
 
 ## Step:3 Run Docker-Compose
 ```
