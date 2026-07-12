@@ -558,7 +558,7 @@ My Project
 |        |-------index.html
 |        |-------Dockerfile
 |
-|-------docker-conpose.yml
+|-------docker-compose.yml
 
 ```
 ## Step:1 Docker Compose Installation
@@ -567,7 +567,7 @@ sudo apt install docker-compose
 ```
 ## Step:2 Create The Apllication with Given Folder Structure
 ```
-
+[Docker Compose](../Session-35/docker-compose-app)
 ```
 
 ## Step:3 Run Docker-Compose
@@ -576,6 +576,8 @@ sudo docker-compose up --build
 ```
 ## Step:4 Test The API
 ```
+http://localhost:5000/api/message
+http://localhost:8081
 
 ```
 ## Step:5 Stop Docker-Compose
