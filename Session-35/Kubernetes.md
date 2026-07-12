@@ -78,4 +78,4 @@ A Kubernetes Cluster consist of:
     prod
 
 ![alt text](image/Kubernetes-1.png)
-![alt text](image/Kubernetes-2.png)
+![alt text](image/kubernetes-2.png)
