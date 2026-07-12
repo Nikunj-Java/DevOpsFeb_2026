@@ -76,3 +76,6 @@ A Kubernetes Cluster consist of:
     kube-system
     dev
     prod
+
+![alt text](image/Kubernetes-1.png)
+![alt text](image/Kubernetes-2.png)
