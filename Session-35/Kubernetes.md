@@ -79,3 +79,27 @@ A Kubernetes Cluster consist of:
 
 ![alt text](image/Kubernetes-1.png)
 ![alt text](image/kubernetes-2.png)
+
+## Installtion
+[Referenece Link](https://kubernetes.io/docs/setup/)
+[Minikube](https://minikube.sigs.k8s.io/docs/start/)
+
+```
+# Installation
+curl -LO https://github.com/kubernetes/minikube/releases/latest/download/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64
+
+# Permission Related Error
+sudo usermod -aG docker $USER
+newgrp docker
+# 
+# Start Your Cluster
+minikube start
+
+# if its configured
+kubectl cluster-info
+
+kubectl get nodes
+#  you can see single machine as control-plane which is master node
+```
+![minikube](image/minikube.png)
