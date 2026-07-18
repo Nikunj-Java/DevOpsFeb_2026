@@ -103,3 +103,45 @@ kubectl get nodes
 #  you can see single machine as control-plane which is master node
 ```
 ![minikube](image/minikube.png)
+
+## Setting up Kubectl in Ubuntu
+```
+# Download the latest release with the command:
+  curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+
+# Validate 
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
+
+echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check
+# you can see Kubectl:OK
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+
+kubectl version --client
+```
+
+## Setting up a cluster using minikube
+```
+curl -LO https://github.com/kubernetes/minikube/releases/latest/download/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64
+
+miniube start
+minikube status
+kubectl cluster-info
+kubectl get nodes # check Connected Nodes
+kubectl dashboard --url # access Minikube IP
+```
+- if kubectl is not working re-configure it
+```
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+
+kubectl version --client
+
+```
+## Create a POD
+```
+kubectl run my-pod --image=nginx --port=80
+kubectl get pods
+kubectl describe pod my-pod
+```
