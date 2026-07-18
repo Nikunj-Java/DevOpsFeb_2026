@@ -145,3 +145,14 @@ kubectl run my-pod --image=nginx --port=80
 kubectl get pods
 kubectl describe pod my-pod
 ```
+## Create Service
+- Expose an application running in your cluster behind a single outward facing endpoint, even when the workload is split accross multiple backends
+```
+kubectl expose pod my-pod --type=NodePort --port=80
+```
+```
+kubectl get svc
+```
+```
+minikbe service my-pod
+```
