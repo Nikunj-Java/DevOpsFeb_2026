@@ -160,7 +160,7 @@ minikbe service my-pod
 ## Create Pod and Service uing YML
 1. create my-pod.yml
 2. create my-service.yml
-
+[reference Link](../Session-36)
 ```
 kubctl apply -f my-pod.yml
 kubectl get pods
