@@ -156,3 +156,17 @@ kubectl get svc
 ```
 minikbe service my-pod
 ```
+
+## Create Pod and Service uing YML
+1. create my-pod.yml
+2. create my-service.yml
+
+```
+kubctl apply -f my-pod.yml
+kubectl get pods
+kubectl describe pod nginx
+
+kubectl apply -f my-service.yml
+kubectl get pods
+minikube service my-service
+```
