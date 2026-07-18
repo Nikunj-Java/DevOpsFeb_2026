@@ -253,7 +253,7 @@ ClusterIP Service
 
 ## 4. ExternalName
 - Maps a Kubernetes Service to an External DNS Name
-- No Pds or Proxing Involve
+- No Pods or Proxing Involve
 
 ```
 Application
