@@ -180,7 +180,7 @@ minikube service my-service
                           |
                      (Headless Service)
 ```
-1. ClusterIP (Default)
+## 1. ClusterIP (Default)
 - Exposes the application inside the Kubernetes cluster only
 - Not Assecible from the outside the cluster
 - Default Service type is none is specified
