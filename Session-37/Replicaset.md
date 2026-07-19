@@ -1,5 +1,6 @@
 # What is Pod?
     - it is the smallest unit in Kubernetes where cntainers runs
+    - Pod: one running container or sometimes few tightly couples containers running - sharing Same IP, storage amd network.
     - if pod dies(crashes) kubernetes doesnot automatically bring it back
 # What is Replicaset ?
 - A Replicaset ensures that a specified number of identical Pods replicas are always running in th cluster
