@@ -282,3 +282,61 @@ DNS Lookup
 |      |        |
 Pod1   Pod2    Pod3
 ```
+--------------------------------------------------------------------------------------------------
+# StatfelSet
+--------------------------------------------------------------------------------------------------
+- it is k8s workload API object which is usually used to manage stateful application
+- Maintains Stable network: POD is having unique name
+- Ordered Deployment and Scaling: pods start in sequence based on rescheduled
+- Stable Pod name:Like myapp-0 myapp-1 myapp-2
+
+## When to use StatefulSet?
+-----------------------------
+-- Distributed System : Kafka, Zookepeer
+-- Datbases: MySQL, PostgreySQL, MongoDB
+
+---------------------------------------------------------------------------------------------------
+## Exercise: 1  Deploy MySQL Databse using Statefulset
+---------------------------------------------------------------------------------------------------
+1. Create MySql.yml for creating Hedless Service
+2. Create PVC (each pod in statefuset will get their own PVC) -- mysql-pvc.yml
+3. Create Staefulset inside that we will create pods(no of replicas and Volumes)
+
+### PVC(Persistent Volume Claim)
+it known as Persistent Volume Claim: A request for storage by a user specified size,access mode, and storage class(SSD,HDD ,Cloud Storage)
+
+### Project Structure
+```
+Statefulset
+|
+|---mysql-pvc.yml
+|
+|--mysql-stateful.yml
+|
+|---mysql.yml
+
+
+```
+[PVC](../Session-38/Statefulset/mysql-stateful.yml) ![text](image/PVC.png)
+### Run the Below Command after Creating the files inside Statefulset
+```
+kubectl apply -f mysql.yml
+```
+```
+kubectl apply -f mysql-pvc.yml
+```
+```
+kubectl apply -f mysql-stateful.yml
+```
+```
+kubectl get statefulset
+```
+```
+kubectl get statefulset
+```
+```
+kubectl get pods
+```
+```
+kubectl get pvc
+```
