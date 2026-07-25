@@ -330,7 +330,7 @@ Statefulset
 
 ```
 ### Project Link [Statefulset](../Session-38/Statefulset)
-[PVC](../Session-38/Statefulset/mysql-stateful.yml) ![text](image/PVC.png)
+[PVC](../Session-38/Statefulset)
 ### Run the Below Command after Creating the files inside Statefulset
 ```
 kubectl apply -f mysql.yml
