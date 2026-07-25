@@ -34,6 +34,18 @@
                         pod(App)           pod (App)
                         pod(DB)            pod(DB)
 ```
+```
+[ Kubernetes Cluster ]
+        │
+        ├──► [ Node 1 (Server) ]
+        │          ├──► [ Pod A ] ──► (Containers)
+        │          └──► [ Pod B ] ──► (Containers)
+        │
+        └──► [ Node 2 (Server) ]
+                   ├──► [ Pod C ] ──► (Containers)
+                   └──► [ Pod D ] ──► (Containers)
+
+```
 ## Amin Compoenents
 ### 1. Cluster
 A Kubernetes Cluster consist of:
