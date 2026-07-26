@@ -8,6 +8,18 @@ resource "aws_instance" "web_server"{
     key_name=var.key_name
     vpc_security_group_ids=[aws_security_group.web_sg.id]
     ## Any Software installation part here
+
+    user_data = <<-EOF
+                #!/bin/bash
+                sudo apt update -y
+                sudo apt install -y nginx
+                sudo systemctl enable nginx
+                sudo systemctl start nginx   
+            EOF
+
+    tags = {
+        Name = "WebServer"
+    }
 }
 
 resource "aws_security_group" "web_sg"{
