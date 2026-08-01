@@ -1,0 +1,7 @@
+ami="ami-0b6d9d3d33ba97d99"
+instance_type="t2.micro"
+subnet_id="subnet-0bb1c79de3EXAMPLE"
+security_group_id="sg-0bb1c79de3EXAMPLE"
+vpc_cidr        = "10.0.0.0/16"
+subnet_cidr     = "10.0.1.0/24"
+availability_zone="us-east-1a"
