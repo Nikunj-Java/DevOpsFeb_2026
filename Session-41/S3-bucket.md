@@ -15,3 +15,15 @@
 ![alt text](images/image-5.png)
 - Create Bucket
 ![alt text](images/image-6.png)
+
+## Let's create S3 Bucket Using Terraform
+- Attach Below Policies
+![alt text](images/image-7.png)
+
+## Project Structure
+```
+s3-bucket-terraform
+|
+|-- main.tf
+|
+```
