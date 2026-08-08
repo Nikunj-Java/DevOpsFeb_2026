@@ -17,7 +17,9 @@ variable "key_name"{
     type        = string
     
 }
-variable "my_ip" {
-  description = "Your public IP address in CIDR notation for SSH access"
+ 
+variable "email" {
+  description = "Your Email Address"
   type        = string
+  default     = "nikunj_soni_consultant@pw.live"
 }
