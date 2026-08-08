@@ -90,3 +90,39 @@ stress-ng --cpu 1 --timeout 5m
 ![alt text](images/image-22.png)
 
 ![alt text](images/image-23.png)
+
+----------------------------------------------------------------------------------------------------
+
+# Create CloudWatch Alarm Using Terraform
+- we will reproduce the same manual CloudWatch demo using Terraform
+
+## Setup
+```
+Terraform
+   │
+   ├── EC2 Ubuntu
+   │      └── stress-ng installed
+   │
+   ├── SNS Topic
+   │      └── Email subscription
+   │
+   └── CloudWatch Alarm
+          │
+          └── CPU > 70% for 2 minutes
+                    │
+                    ▼
+                  SNS
+                    │
+                    ▼
+                  Email
+```
+## Project Structure
+```
+terraform-cloudwatch-demo/
+│
+├── provider.tf
+├── variables.tf
+├── terraform.tfvars
+├── main.tf
+└── outputs.tf
+```
