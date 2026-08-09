@@ -217,16 +217,46 @@ resource "aws_instance" "jenkins_server" {
   associate_public_ip_address = true
 
   user_data = <<-EOF
-              #!/bin/bash
-              sudo apt-get update -y
-              sudo apt-get install -y openjdk-11-jdk
-              java -version
-              wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
-              sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
-              sudo apt-get update -y
-              sudo apt-get install -y jenkins
-              sudo systemctl start jenkins
-              sudo systemctl enable jenkins
+#!/bin/bash
+
+set -e
+
+# Update Ubuntu
+apt-get update -y
+
+# Install Java 21 and required packages
+apt-get install -y \
+  fontconfig \
+  openjdk-21-jre \
+  curl \
+  wget
+
+# Verify Java
+java -version
+
+# Create keyring directory
+mkdir -p /etc/apt/keyrings
+
+# Install current Jenkins repository signing key
+curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2026.key \
+  | tee /etc/apt/keyrings/jenkins-keyring.asc > /dev/null
+
+# Add Jenkins repository
+echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/" \
+  | tee /etc/apt/sources.list.d/jenkins.list > /dev/null
+
+# Update repositories
+apt-get update -y
+
+# Install Jenkins
+apt-get install -y jenkins
+
+# Start Jenkins
+systemctl enable jenkins
+systemctl start jenkins
+
+# Show status
+systemctl status jenkins --no-pager
               sleep 20
               # Install CloudWatch Agent
               sudo apt-get install -y amazon-cloudwatch-agent
