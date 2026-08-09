@@ -297,16 +297,120 @@ resource "aws_instance" "jenkins_server" {
 # CLOUDWATCH METRIC FILTER
 # ============================================================
 
+resource "aws_cloudwatch_log_metric_filter" "jenkins_errors" {
+
+  name = "JenkinsErrorFilter"
+
+  log_group_name = aws_cloudwatch_log_group.jenkins_logs.name
+
+  pattern = "ERROR"
+
+
+  metric_transformation {
+
+    name = "JenkinsErrorCount"
+
+    namespace = "JenkinsApp"
+
+    value = "1"
+
+    default_value = 0
+
+  }
+
+}
+
 # ============================================================
 # SNS TOPIC
 # ============================================================
+
+resource "aws_sns_topic" "jenkins_alarm" {
+
+  name = "jenkins-error-alert"
+
+}
 
 
 # ============================================================
 # SNS EMAIL SUBSCRIPTION
 # ============================================================
 
+resource "aws_sns_topic_subscription" "jenkins_email" {
+
+  topic_arn = aws_sns_topic.jenkins_alarm.arn
+
+  protocol = "email"
+
+  endpoint = var.email
+
+}
+
 
 # ============================================================
 # CLOUDWATCH ALARM
 # ============================================================
+
+resource "aws_cloudwatch_metric_alarm" "jenkins_error_alarm" {
+
+  alarm_name = "Jenkins-Error-Alarm"
+
+  alarm_description = "Triggers when Jenkins produces more than 5 ERROR log entries in one minute"
+
+
+  # ----------------------------------------------------------
+  # Metric
+  # ----------------------------------------------------------
+
+  namespace = "JenkinsApp"
+
+  metric_name = "JenkinsErrorCount"
+
+
+  # ----------------------------------------------------------
+  # Condition
+  # ----------------------------------------------------------
+
+  comparison_operator = "GreaterThanThreshold"
+
+  threshold = 5
+
+
+  # ----------------------------------------------------------
+  # Evaluation
+  # ----------------------------------------------------------
+
+  evaluation_periods = 1
+
+  period = 60
+
+  statistic = "Sum"
+
+
+  # ----------------------------------------------------------
+  # Notification
+  # ----------------------------------------------------------
+
+  alarm_actions = [
+
+    aws_sns_topic.jenkins_alarm.arn
+
+  ]
+
+
+  ok_actions = [
+
+    aws_sns_topic.jenkins_alarm.arn
+
+  ]
+
+
+  treat_missing_data = "notBreaching"
+
+
+  depends_on = [
+
+    aws_cloudwatch_log_metric_filter.jenkins_errors
+
+  ]
+
+}
