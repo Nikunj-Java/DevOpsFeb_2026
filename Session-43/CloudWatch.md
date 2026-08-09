@@ -30,3 +30,27 @@ aws ec2 describe-key-pairs \
   --query "KeyPairs[*].KeyName" \
   --output table
 ```
+
+## Project
+[Project](Jenkins-cicd-monitoring)
+
+## Start Jenkins
+```http://<Your Public IP>:8080
+```
+```
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+```
+```
+Install Suggested Plugins
+```
+## Goto> AWS - Generate Logs
+```
+for i in {1..10}; do
+  echo "$(date) ERROR Jenkins build failed - Database connection failed - Error $i" | sudo tee -a /var/log/jenkins/jenkins.log
+done
+```
+
+## Jenkins Logs
+```
+sudo cat /var/log/jenkins/jenkins.log
+```
