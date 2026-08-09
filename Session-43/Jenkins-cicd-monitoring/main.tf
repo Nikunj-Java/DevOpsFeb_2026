@@ -1,38 +1,297 @@
 # ============================================================
 # DATA SOURCES: AMI ID
 # ============================================================
+# Latest Ubuntu 24.04 LTS AMI
+data "aws_ssm_parameter" "ubuntu_ami" {
+  name = "/aws/service/canonical/ubuntu/server/24.04/stable/current/amd64/hvm/ebs-gp3/ami-id"
+}
+
+# Default VPC
+data "aws_vpc" "default" {
+  default = true
+}
 
 # ============================================================
 # S3 BUCKET
 # Optional storage for the demo
 # ============================================================
 
+resource "aws_s3_bucket" "jenkins_logs" {
+   bucket_prefix = "jenkins-monitoring-"
+
+  tags = {
+    Name        = "Jenkins Monitoring Logs"
+    Environment = "Training"
+  }
+}
+resource "aws_s3_bucket_server_side_encryption_configuration" "jenkins_logs" {
+  bucket = aws_s3_bucket.jenkins_logs.id
+
+  rule {
+    apply_server_side_encryption_by_default {
+      sse_algorithm = "AES256"
+    }
+  }
+}
+
 # ============================================================
-# IAM ROLE FOR EC2
+# IAM ROLE FOR EC2 (Optional: if already done from AWS)
 # ============================================================
+resource "aws_iam_role" "jenkins_role" {
+
+  name = "jenkins-cloudwatch-role"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+
+    Statement = [
+      {
+        Effect = "Allow"
+
+        Principal = {
+          Service = "ec2.amazonaws.com"
+        }
+
+        Action = "sts:AssumeRole"
+      }
+    ]
+  })
+
+  tags = {
+    Name = "Jenkins CloudWatch Role"
+  }
+}
 
 # ============================================================
 # CLOUDWATCH AGENT POLICY
 # ============================================================
+resource "aws_iam_role_policy_attachment" "cloudwatch_agent" {
+
+  role = aws_iam_role.jenkins_role.name
+
+  policy_arn = "arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy"
+}
 
 # ============================================================
 # EC2 INSTANCE PROFILE
 # ============================================================
 
+resource "aws_iam_instance_profile" "jenkins_profile" {
+  name = "jenkins-cloudwatch-profile"
+  role = aws_iam_role.jenkins_role.name
+}
+
 # ============================================================
 # SECURITY GROUP
 # ============================================================
+
+resource "aws_security_group" "jenkins_sg" {
+
+  name = "jenkins-monitoring-sg"
+
+  description = "Security group for Jenkins monitoring demo"
+
+  vpc_id = data.aws_vpc.default.id
+
+
+  # ----------------------------------------------------------
+  # SSH
+  # ----------------------------------------------------------
+
+  ingress {
+
+    description = "SSH"
+
+    from_port = 22
+
+    to_port = 22
+
+    protocol = "tcp"
+
+    cidr_blocks = [
+      "0.0.0.0/0"
+    ]
+  }
+
+
+  # ----------------------------------------------------------
+  # Jenkins
+  # ----------------------------------------------------------
+
+  ingress {
+
+    description = "Jenkins"
+
+    from_port = 8080
+
+    to_port = 8080
+
+    protocol = "tcp"
+
+    cidr_blocks = [
+      "0.0.0.0/0"
+    ]
+  }
+
+
+  # ----------------------------------------------------------
+  # HTTP
+  # ----------------------------------------------------------
+
+  ingress {
+
+    description = "HTTP"
+
+    from_port = 80
+
+    to_port = 80
+
+    protocol = "tcp"
+
+    cidr_blocks = [
+      "0.0.0.0/0"
+    ]
+  }
+
+
+  # ----------------------------------------------------------
+  # Outbound
+  # ----------------------------------------------------------
+
+  egress {
+
+    from_port = 0
+
+    to_port = 0
+
+    protocol = "-1"
+
+    cidr_blocks = [
+      "0.0.0.0/0"
+    ]
+  }
+
+
+  tags = {
+
+    Name = "Jenkins-Monitoring-SG"
+
+  }
+}
 
 
 # ============================================================
 # CLOUDWATCH LOG GROUP
 # ============================================================
+resource "aws_cloudwatch_log_group" "jenkins_logs" {
+
+  name              = "/jenkins/logs"
+
+  retention_in_days = 7
+
+  tags = {
+    Application        = "Jenkins"
+    Environment = "Training"
+  }
+}
 
 
 # ============================================================
 # EC2 INSTANCE
 # ============================================================
+resource "aws_instance" "jenkins_server" {
 
+  ami           = data.aws_ssm_parameter.ubuntu_ami.value
+
+  instance_type = var.instance_type
+
+  key_name      = var.key_name
+
+   
+
+  vpc_security_group_ids = [
+    aws_security_group.jenkins_sg.id
+  ]
+
+  iam_instance_profile = aws_iam_instance_profile.jenkins_profile.name
+  associate_public_ip_address = true
+
+  user_data = <<-EOF
+              #!/bin/bash
+              sudo apt-get update -y
+              sudo apt-get install -y openjdk-11-jdk
+              java -version
+              wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
+              sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+              sudo apt-get update -y
+              sudo apt-get install -y jenkins
+              sudo systemctl start jenkins
+              sudo systemctl enable jenkins
+              sleep 20
+              # Install CloudWatch Agent
+              sudo apt-get install -y amazon-cloudwatch-agent
+              # Create CloudWatch Agent configuration file
+                cat <<EOT > /opt/aws/amazon-cloudwatch-agent/bin/config.json
+                {
+                    "agent": {
+                    "metrics_collection_interval": 60,
+                    "run_as_user": "root"
+                    },
+                    "logs": {
+                    "logs_collected": {
+                        "files": {
+                            "collect_list": [
+                                {
+                                    "file_path": "/var/log/jenkins/jenkins.log",
+                                    "log_group_name": "/jenkins/logs",
+                                    "log_stream_name": "{instance_id}"
+                                }
+                            ]
+                        }
+                    }
+                    }
+                }
+                EOT
+              # Start CloudWatch Agent
+              sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -c file:/opt/aws/amazon-cloudwatch-agent/bin/config.json -s
+              # Create TEST Jenkins LOG
+                sudo touch /var/log/jenkins/jenkins.log
+                sudo chmod 644 /var/log/jenkins/jenkins.log
+              # Create a test log entry
+                cat > /usr/local/bin/create-jenkins-error.sh <<'SCRIPT'
+
+                #!/bin/bash
+
+                echo "$(date) ERROR Jenkins build failed - Database connection failed" >> /var/log/jenkins/jenkins.log
+
+                SCRIPT
+
+
+                chmod +x /usr/local/bin/create-jenkins-error.sh
+            
+                # ========================================================
+                # FINISH
+                # ========================================================
+
+                echo "======================================"
+                echo "Jenkins installation completed"
+                echo "CloudWatch Agent configured"
+                echo "======================================"
+            EOF
+
+  tags = {
+    Name        = "Jenkins-Monitoring-Server"
+    Application = "Jenkins"
+    Environment = "Training"
+  }
+  depends_on = [
+    aws_iam_role_policy_attachment.cloudwatch_agent,
+    aws_iam_instance_profile.jenkins_profile,
+    aws_security_group.jenkins_sg,
+    aws_cloudwatch_log_group.jenkins_logs
+  ]
+
+}
 
 # ============================================================
 # CLOUDWATCH METRIC FILTER
