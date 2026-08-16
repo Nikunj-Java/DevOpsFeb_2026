@@ -68,49 +68,25 @@ CIDR: 10.0.16.0/20
 ```
 
 
-
 ------------------------------------------------------------------------
 
 # 3. Internet Gateway
 
-Create an Internet Gateway:
+*__VPC → Internet Gateways → Create Internet Gateway__*
 
-``` text
-Name: DevOps-IGW
+Name:
 ```
-
-Then attach it to:
-
-``` text
+devops-igw
+```
+Then:
+__Actions → Attach to VPC__
+Select:
+```
 devops-vpc
 ```
-
-After attachment, the IGW will have an ID similar to:
-
-``` text
-igw-0123456789abcdef
-```
-
-### Important
-
-The Internet Gateway must be **attached to the same VPC** used by the
-route table.
-
-Check:
-
-``` text
-VPC → Internet Gateways
-```
-
-The state should show:
-
-``` text
-Attached
-```
-
 ------------------------------------------------------------------------
 
-# 4. Public Route Table
+# 4. Create Public Route Table
 
 Create a route table:
 
