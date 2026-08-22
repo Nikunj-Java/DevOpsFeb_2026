@@ -237,3 +237,19 @@ output:
 ```
 echo "FINAL SUCCESS TEST $(date)" | sudo tee -a /var/log/myapp/app.log
 ```
+```
+echo "User login successful" | sudo tee -a /var/log/myapp/app.log
+```
+```
+echo "Application Started" | sudo tee -a /var/log/myapp/app.log
+```
+```
+echo "Application started" | sudo tee -a /var/log/myapp/app.log
+```
+
+# Step:11 Open CloudWatch
+Go to: ClouWatch>view logs>
+![alt text](images/cloudwatch.png)
+You will see the folder with: ```/demo/ec2/myapp```
+click on it and open the logs
+![alt text](images/logging.png)
