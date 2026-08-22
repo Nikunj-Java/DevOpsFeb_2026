@@ -178,3 +178,62 @@ verify:
 ```
 cat /var/log/myapp/app.log
 ```
+# Step:8 Configure CloudWatch Agent
+```
+sudo nano /opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json
+```
+add this to the file
+```
+{
+    "logs": {
+        "logs_collected": {
+            "files": {
+                "collect_list": [
+                    {
+                        "file_path": "/var/log/myapp/app.log",
+                        "log_group_name": "/demo/ec2/myapp",
+                        "log_stream_name": "{instance_id}"
+                    }
+                ]
+            }
+        }
+    }
+}
+```
+Save: ctr+c
+Exit: ctr+x
+
+Validate:
+```
+python3 -m json.tool /opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json
+```
+Verify Configuration
+```
+cat /opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json
+```
+
+## Step:9 Start Cloud Watch Agent
+```
+sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
+-a start \
+-c file:/opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json \
+-m ec2
+```
+check the agent status:
+```
+sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a status
+```
+output:
+```
+{
+  "status": "running",
+  "starttime": "2026-08-22T09:18:01+00:00",
+  "configstatus": "configured",
+  "version": "1.300069.1"
+}
+```
+
+# Step:10 Generate Test Logs
+```
+echo "FINAL SUCCESS TEST $(date)" | sudo tee -a /var/log/myapp/app.log
+```
