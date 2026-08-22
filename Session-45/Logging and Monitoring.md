@@ -125,3 +125,56 @@ Click
 ```
 Update IAM role
 ```
+# Step:4 Connect EC2 Instance(Remotely or Web)
+check the os:
+```
+cat /etc/os-release
+```
+also
+```
+whoami
+```
+# Step: 5 Install Cound Watch Agent
+```
+sudo yum install amazon-cloudwatch-agent
+```
+if prompted:
+```
+Is this ok [y/d/N]:
+``` 
+type:
+```
+y
+```
+# Step:6 Create our Application log Directory
+```
+sudo mkdir /var/log/myapp
+```
+create ```app.log``` file
+```
+sudo touch /var/log/myapp/app.log
+```
+Verify
+```
+ls -l /var/log/myapp
+```
+now you will see
+```
+app.log
+```
+
+# Step:7 Generate a Test Log
+```
+echo "Test Log" | sudo tee -a /var/log/myapp/app.log
+```
+verify:
+```
+cat /var/log/myapp/app.log
+```
+```
+echo "Test Log-1" | sudo tee -a /var/log/myapp/app.log
+```
+verify:
+```
+cat /var/log/myapp/app.log
+```
