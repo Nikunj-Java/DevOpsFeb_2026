@@ -45,7 +45,7 @@ cat /var/log/myapp/app.log
        Logs              / Alarms
 ```
 
-# Step:1 Create an EC2 Instance
+## Step:1 Create an EC2 Instance
 Go to:
 __AWS Console--> EC2-->Instance--> Launch Instance__
 
@@ -78,7 +78,7 @@ MYIP
 ```
 use default one only
 
-# Step:2 Create IAM Role
+## Step:2 Create IAM Role
 __AWS Console → IAM → Roles → Create role__
 Select:
 ```
@@ -114,7 +114,7 @@ CloudWatchAgentServerPolicy
 Permission to interact with CloudWatch
 ```
 
-# Step:3 Attach the IAM Role to EC2
+## Step:3 Attach the IAM Role to EC2
 __EC2 → Instances → your instance → Actions → Security → Modify IAM Role__
 
 Select:
@@ -125,7 +125,7 @@ Click
 ```
 Update IAM role
 ```
-# Step:4 Connect EC2 Instance(Remotely or Web)
+## Step:4 Connect EC2 Instance(Remotely or Web)
 check the os:
 ```
 cat /etc/os-release
@@ -134,7 +134,7 @@ also
 ```
 whoami
 ```
-# Step: 5 Install Cound Watch Agent
+## Step: 5 Install Cound Watch Agent
 ```
 sudo yum install amazon-cloudwatch-agent
 ```
@@ -146,7 +146,7 @@ type:
 ```
 y
 ```
-# Step:6 Create our Application log Directory
+## Step:6 Create our Application log Directory
 ```
 sudo mkdir /var/log/myapp
 ```
@@ -163,7 +163,7 @@ now you will see
 app.log
 ```
 
-# Step:7 Generate a Test Log
+## Step:7 Generate a Test Log
 ```
 echo "Test Log" | sudo tee -a /var/log/myapp/app.log
 ```
@@ -178,7 +178,7 @@ verify:
 ```
 cat /var/log/myapp/app.log
 ```
-# Step:8 Configure CloudWatch Agent
+## Step:8 Configure CloudWatch Agent
 ```
 sudo nano /opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json
 ```
@@ -233,7 +233,7 @@ output:
 }
 ```
 
-# Step:10 Generate Test Logs
+## Step:10 Generate Test Logs
 ```
 echo "FINAL SUCCESS TEST $(date)" | sudo tee -a /var/log/myapp/app.log
 ```
@@ -247,9 +247,12 @@ echo "Application Started" | sudo tee -a /var/log/myapp/app.log
 echo "Application started" | sudo tee -a /var/log/myapp/app.log
 ```
 
-# Step:11 Open CloudWatch
+## Step:11 Open CloudWatch
 Go to: ClouWatch>view logs>
 ![alt text](images/cloudwatch.png)
 You will see the folder with: ```/demo/ec2/myapp```
 click on it and open the logs
 ![alt text](images/logging.png)
+--------------------------------------------------------------------------
+
+# Let's do the same using Terrform

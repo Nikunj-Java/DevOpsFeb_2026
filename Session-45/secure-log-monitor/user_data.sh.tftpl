@@ -1,0 +1,42 @@
+#!/bin/bash
+set -eux
+
+# Install the CloudWatch Agent.
+dnf install -y amazon-cloudwatch-agent
+
+# Create the same application log path used in the manual exercise.
+mkdir -p /var/log/myapp
+touch /var/log/myapp/app.log
+
+# Create the CloudWatch Agent configuration.
+cat > /opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json <<'EOF'
+{
+  "logs": {
+    "logs_collected": {
+      "files": {
+        "collect_list": [
+          {
+            "file_path": "/var/log/myapp/app.log",
+            "log_group_name": "${log_group_name}",
+            "log_stream_name": "{instance_id}"
+          }
+        ]
+      }
+    }
+  }
+}
+EOF
+
+# Validate JSON.
+python3 -m json.tool \
+  /opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json > /dev/null
+
+# Start the CloudWatch Agent using the configuration above.
+/opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
+  -a start \
+  -c file:/opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json \
+  -m ec2
+
+# Generate an initial test log.
+echo "Terraform deployment successful: $(date)" | tee -a /var/log/myapp/app.log
+echo "CloudWatch Agent configured successfully: $(date)" | tee -a /var/log/myapp/app.log
