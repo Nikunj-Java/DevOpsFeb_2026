@@ -201,3 +201,7 @@ sudo mount /dev/nvme3n1 /restore
 df -h
 ```
 ![alt text](images/image-35.png)
+
+if you will see this carefully you will get previously loaded(Backup) data  here
+
+![alt text](images/image-36.png)
