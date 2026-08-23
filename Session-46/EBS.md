@@ -169,7 +169,7 @@ ls -l /data
 
 ## Step:11 Create Volume From SnapShot
 - Go to> EBS>Snapshot>Create Volume From SnapShot
-![alt text](image.png)
+![alt text](images/image-28.png)
 
 ![alt text](images/image-29.png)
 
