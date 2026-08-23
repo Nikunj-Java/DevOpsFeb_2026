@@ -145,3 +145,59 @@ Go to: volumes>action>Detach Volume
 Go to: EC2 Instance>Storage>
 __Note:__ here the latest EBS Volume is now No Longer Exist
 ![alt text](images/image-23.png)
+
+## Step:10 Create A Snapshot
+- What is Snapshot?
+```
+> it is a backup of the EBS volume at that point/ time
+> used for Recovery Or Disaster management
+```
+- Go to: EBS Volumes> actions> snapshot
+![alt text](images/image-24.png)
+
+![alt text](images/image-26.png)
+
+- Goto> AWS CLI> Create another File 
+```
+echo "This file exists after snapshot" | sudo tee /data/after-snapshot.txt
+```
+- Then:
+```
+ls -l /data
+```
+![alt text](images/image-27.png)
+
+## Step:11 Create Volume From SnapShot
+- Go to> EBS>Snapshot>Create Volume From SnapShot
+![alt text](image.png)
+
+![alt text](images/image-29.png)
+
+![alt text](images/image-30.png)
+
+![alt text](images/image-31.png)
+
+![alt text](images/image-32.png)
+
+![alt text](images/image-33.png)
+
+- Go to> AWS CLI> lsblk
+![alt text](images/image-34.png)
+so here ```nvme3n1``` is the New Volume From Sanpshot
+
+- run
+```
+lsblk -f
+```
+## Step:12 Mount The Restored Volume
+- create another mount point
+```
+sudo mkdir /restore
+```
+```
+sudo mount /dev/nvme3n1 /restore
+```
+```
+df -h
+```
+![alt text](images/image-35.png)
