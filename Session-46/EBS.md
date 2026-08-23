@@ -65,3 +65,52 @@ __Note:__ Make Sure Your EC2 Instance and EBS volume Must be in a Same AZ's, if 
 lsblk
 ```
 ![alt text](images/image-16.png)
+
+## Step:4 Format the EBS Volume
+
+- Format it with ```ext4``` filesystem:
+```
+sudo mkfs -t ext4 /dev/nvme1n1
+```
+![alt text](images/image-17.png)
+
+verify the Filesystem
+```
+lsblk -f
+```
+
+![alt text](images/image-18.png)
+
+## Step:5 Create a Mount Point
+- Create a directory called ```/data```
+
+```
+sudo mkdir /data
+```
+
+- Mount The EBS Volume
+
+```
+sudo mount /dev/nvme1n1 /data
+```
+- verify the mount with:
+```
+df -h
+```
+![alt text](images/image-19.png)
+
+- output
+```
+/dev/nvme1n1      974M   24K   907M   1%   /data
+```
+
+## Step:6 Test the EBS Volume
+- create a test file on the mounted EBS Volume
+```
+echo "Hello From EBS" | sudo tee /data/test.txt
+```
+- Read the file
+```
+cat /data/test.txt
+```
+![alt text](images/image-20.png)
