@@ -135,3 +135,13 @@ Now Try to Read Data
 ```
 cat /data/test.txt
 ```
+
+## Step: 9 Detach The Volume
+Go to: volumes>action>Detach Volume
+![alt text](images/image-21.png)
+
+![alt text](images/image-22.png)
+
+Go to: EC2 Instance>Storage>
+__Note:__ here the latest EBS Volume is now No Longer Exist
+![alt text](images/image-23.png)
