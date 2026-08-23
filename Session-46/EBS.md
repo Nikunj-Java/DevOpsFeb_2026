@@ -114,3 +114,24 @@ echo "Hello From EBS" | sudo tee /data/test.txt
 cat /data/test.txt
 ```
 ![alt text](images/image-20.png)
+
+## Step:7 Unmount Disk
+```
+sudo umount /data
+```
+Now Try to Read Data
+```
+cat /data/test.txt
+```
+Output:
+```
+cat: /data/test.txt: No such file or directory
+```
+## Step:8 Mount The Disk
+```
+sudo mount /dev/nvme1n1 /data
+```
+Now Try to Read Data
+```
+cat /data/test.txt
+```
