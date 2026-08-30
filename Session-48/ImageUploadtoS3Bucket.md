@@ -17,7 +17,7 @@ flask-s3-terraform
 |---requirements.txt(frameworks/dependencies to be installed)
 
 ```
-# Step:1 Create Index.html
+## Step:1 Create Index.html
 ```
 <!DOCTYPE html>
 <html lang="en">
@@ -112,6 +112,7 @@ if __name__ == '__main__':
 ```
 ## Step:3 Create AWS S3 Bucket
 - add bucket policy
+- [Policy Generator](https://awspolicygen.s3.amazonaws.com/policygen.html)
 ```
 {
     "Version": "2012-10-17",
@@ -146,3 +147,6 @@ python3 app.py
 ![alt text](flask-s3-terraform/images/image.png)
 ![alt text](flask-s3-terraform/images/image-1.png)
 ![alt text](flask-s3-terraform/images/image-2.png)
+
+## Step:6 Create S3 Bucket using Terraform
+[flask-s3-terraform-app](flask-s3-terraform)
