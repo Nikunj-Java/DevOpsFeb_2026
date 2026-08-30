@@ -20,6 +20,7 @@ provider "aws" {
 # Run the Application on the EC2 instance
 # open the Ports  80, 5000
 
+
 # s3 bucket to host the Flask application
 resource "aws_s3_bucket" "flask_app_bucket"{
   bucket = "amzn-s3-bucket-30082026"
