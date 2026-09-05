@@ -172,3 +172,9 @@ aws s3api put-bucket-encryption \
 aws s3api get-bucket-encryption \
     --bucket my-practise-bucket-nikunj
 ```
+
+## Open S3 Bucket 
+
+![alt text](images/image-4.png)
+
+![alt text](images/image-5.png)
