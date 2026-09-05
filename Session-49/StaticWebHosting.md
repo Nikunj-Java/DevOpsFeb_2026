@@ -178,3 +178,49 @@ aws s3api get-bucket-encryption \
 ![alt text](images/image-4.png)
 
 ![alt text](images/image-5.png)
+
+
+## Delete The Bucket
+```
+aws s3api delete-bucket --bucket my-practise-bucket-nikunj --region us-east-1
+```
+## Error
+- as bucket already Contains Some Data, first we need to Delete That Data
+```
+aws s3api delete-objects \
+  --bucket my-practise-bucket-nikunj \
+  --delete "$(aws s3api list-object-versions --bucket my-practise-bucket-nikunj \
+  --query '{Objects: Versions[].{Key:Key,VersionId:VersionId}}')"
+```
+
+## Upload Large Files in S3
+- this is use ful if you want to upload zip files
+- so this can be done using multipart
+```
+aws s3 create-multipart-upload --bucket my-practise-bucket-nikunj --key <Your_File>.zip
+```
+- Response
+```
+{
+    "ServerSideEncryption": "AES256",
+    "Bucket": "my-practise-bucket-nikunj",
+    "Key": "images.zip",
+    "UploadId": "rbkPkEISMZiiMmhOqFcLNc3p.YR2Qbouu9vWsj7ipIcLM8x6rUPnfCqYHjQJIQIFQbieHO_wd3ynMOMwYwGfJC9Bn4M.F8YcHOW7yNTsHj_NBK.SWKZjgaDl1kCeiT8A"
+}
+```
+- output: UPLOAD_ID
+(Note: Copy This Upload ID For NEXT Step)
+- Upload uinsg Multipart
+```
+aws s3api upload-part \
+  --bucket my-practise-bucket-nikunj \
+  --key images.zip \
+  --part-number 1 \
+  --body part1.zip \
+  --upload-id "rbkPkEISMZiiMmhOqFcLNc3p.YR2Qbouu9vWsj7ipIcLM8x6rUPnfCqYHjQJIQIFQbieHO_wd3ynMOMwYwGfJC9Bn4M.F8YcHOW7yNTsHj_NBK.SWKZjgaDl1kCeiT8A"
+```
+
+or You Can Use it Directly
+```
+aws s3 cp images.zip s3://my-practise-bucket-nikunj/
+```
