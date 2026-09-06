@@ -10,7 +10,7 @@ dynamodb = boto3.resource(
 )
 
 # Connect to existing table
-table = dynamodb.Table('Users')
+table = dynamodb.Table('users')
 
 
 @app.route('/')
