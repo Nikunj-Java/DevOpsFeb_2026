@@ -32,3 +32,8 @@ Email            : rahul@gmail.com
 Name             : Rahul Sharma
 Designation      : DevOps Engineer
 ```
+
+# Task:2
+```
+Generate Terraform Script to Create an AWS EC2 Instance-> Deploy Python App-> Deploy Index.html->Create DynamoDB as a fully working Model
+```
