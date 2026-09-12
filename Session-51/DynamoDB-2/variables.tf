@@ -1,0 +1,1 @@
+# Declarations for DynamoDB-2 variables
