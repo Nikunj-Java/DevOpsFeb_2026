@@ -122,6 +122,7 @@ Uncheck the Checkbox as we dont need Load Balancer as it is a single Application
 
 ## Step:8
 [Code To Be Deployed](https://github.com/Nikunj-Java/CodeDeployDemo)
+[Note: Fork This Repository to Your Guthub Repo]
 
 ## Step:9
 Create Deployment
