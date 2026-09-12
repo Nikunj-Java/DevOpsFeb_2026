@@ -71,3 +71,66 @@ sudo ./install auto
 ```
 sudo systemctl status codedeploy-agent
 ```
+## Step:5 Create Code Deploy Application
+- Goto> CodeDeploy> Create Application> Name: MyApp
+- Platform
+```
+EC2- On Premises
+```
+- Create The Application
+
+## Step:6 Create Service Role
+- Goto> IAM>Create Role>AWS Service>
+Use Case:
+```
+Code Deploy
+```
+Choose
+```
+CodeDeploy
+```
+- It Will Automatically Create Permission : AWSCodeDeployRole
+- Give The Name:  code-deploy-service-role
+
+Click - Create Role
+## Step:7 Create Deployment Group
+Click On Create Deployment Group
+- Give The Name:GitHubDeployment
+- choose the Service Role That You Have Created ins Step:6
+Search for
+```
+code-deploy-service-role
+```
+Deployment Type:
+```
+in place
+```
+Environment configuration
+Choose:
+```
+Amazon EC2 Instance
+```
+Tags
+Key:  Name
+Value: your ec2 instance name eg: code-deploy-demo
+
+Load Balancer
+```
+Uncheck the Checkbox as we dont need Load Balancer as it is a single Application
+```
+ Create The Deployment Group
+
+## Step:8
+Create Deployment
+![alt text](image-1.png)
+
+chose Github
+![alt text](image-2.png)
+
+- Authenticate Your Guthub and Provide Your Username and Repository
+![alt text](image-3.png)
+- goto> repo and copy the Commit code (Genrally Right Side You Will Get)
+![alt text](image-4.png)
+![alt text](image-5.png)
+Click on Create Deployemnt
+![alt text](image-6.png)
